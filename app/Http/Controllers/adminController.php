@@ -8,6 +8,7 @@ use App\Models\admins;
 use Illuminate\Support\Facades\Auth;
 use App\Models\className;
 use App\Models\teachers;
+use App\Models\parents;
 
 class adminController extends Controller
 {
@@ -38,8 +39,8 @@ class adminController extends Controller
     //* function to fetch all class names and years for the selector to showcase student info
     public function getClassInfo() {
         
-        $years = ClassName::select('year')->distinct()->pluck('year'); //fetch all years
-        $classes = ClassName::all();  // Fetch all classes
+        $years = className::select('year')->distinct()->pluck('year'); //fetch all years
+        $classes = className::all();  // Fetch all classes
 
         return view('classInfoSelector', compact('years', 'classes'));
     }
@@ -53,7 +54,7 @@ class adminController extends Controller
         $classname = $request->input('classname');
     
         // Find the classID based on year and class name
-        $class = ClassName::where('year', $year)
+        $class = className::where('year', $year)
                           ->where('classname', $classname)
                           ->first();
     
@@ -70,11 +71,14 @@ class adminController extends Controller
 
     //* function to return all teachers list alphabetically
     public function showTeacherList() {
-        
-        
         $teacher = teachers::orderBy('teacherName', 'asc')->get();
         return view('teacherList',["teacher"=>$teacher]);
 
     }
 
+    public function getParentList() {
+        $parent = parents::all();
+
+        return view("parentList",["parent"=>$parent]);
+    }
 }
