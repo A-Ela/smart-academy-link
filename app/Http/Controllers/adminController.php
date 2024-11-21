@@ -17,10 +17,10 @@ class adminController extends Controller
     //* function to return the view of main dashboard page of admin
     public function getDashboard() {
         
-        $adminID = Auth::id();
-        $adminName = admins::find($adminID)->value("name");
+        //$adminID = Auth::id();
+       // $adminName = admins::find($adminID)->value("name");
         
-        return view("adminDashboard",["adminName"=> $adminName]);
+        return view("adminDashboard"); //["adminName"=> $adminName]);
     }
 
 
