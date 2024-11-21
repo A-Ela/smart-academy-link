@@ -14,14 +14,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
 
         // Create a pivot table for the many-to-many relationship
         Schema::create('class_teacher', function (Blueprint $table) {
             $table->id();
             $table->foreignId('teacherID')->constrained('teachers')->onDelete('cascade');
-            $table->foreignId('classID')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('classID')->constrained('classNames')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

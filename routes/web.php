@@ -11,31 +11,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin',[adminController::class,'getDashboard'])->name('admin-dashboard');
 
 //select class
-Route::post('/admin/class-selector',[adminController::class,'getClassInfo'])->name('class-selector');
+Route::get('/admin/class-selector',[adminController::class,'getClassInfo'])->name('class-selector');
+
 
 //class lists
 Route::get('/admin/class-list',[adminController::class,'getClassList'])->name('class-list');
-Route::get('/admin/class-list/add-manualy',[])->name('add-class-manualy');
-Route::get('/admin/class-list/add-document',[])->name('add-class-document');
+Route::get('/admin/class-list/add-manualy',[classManagerController::class,'manual'])->name('add-class-manualy');
+Route::get('/admin/class-list/add-document',[classManagerController::class,'document'])->name('add-class-document');
 //use this to store any post either from manual or doc
 //todo update the action field
-Route::post('/admin/class-list/store', [])->name('class-list.store');
+Route::post('/admin/class-list/store', [classManagerController::class,'store'])->name('class-list.store');
+
 
 //student list
 Route::get('/admin/student-list',[adminController::class,'showStudentList'])->name('student-list');
-
 Route::get('/admin/student-list/add-manualy',[studentManagerController::class,'manual'])->name('add-student-manualy');
 Route::get('/admin/student-list/add-document',[studentManagerController::class,'document'])->name('add-student-document');
 //use this to store any post either from manual or doc
 Route::post('/admin/student-list/store', [studentManagerController::class,'store'])->name('student-list.store');
 
+
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
-Route::get('/admin/teacher-list/add-manualy',[])->name('add-teacher-manualy');
-Route::get('/admin/teacher-list/add-document',[])->name('add-teacher-document');
+Route::get('/admin/teacher-list/add-manualy',[teacherManagerController::class,'manual'])->name('add-teacher-manualy');
+Route::get('/admin/teacher-list/add-document',[teacherManagerController::class,'document'])->name('add-teacher-document');
 //use this to store any post either from manual or doc
-//todo update the action field
-Route::post('/admin/teacher-list/store', [])->name('teacher-list.store');
+Route::post('/admin/teacher-list/store', [teacherManagerController::class,'store'])->name('teacher-list.store');
+
 
 //parent list
 Route::get('/admin/parent-list',[adminController::class,'getParentList'])->name('parent-list');

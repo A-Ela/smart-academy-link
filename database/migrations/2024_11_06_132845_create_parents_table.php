@@ -16,12 +16,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Create a pivot table for the many-to-many relationship between parents and students
+         //Create a pivot table for the many-to-many relationship between parents and students
         Schema::create('parent_student', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parentID')->constrained('parents')->onDelete('cascade');
-            $table->foreignId('studentID')->constrained('students')->onDelete('cascade');
+            $table->foreignId('parentID')->constrained('parents','parentID')->onDelete('cascade');
+            $table->foreignId('studentID')->constrained('students','studentID')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

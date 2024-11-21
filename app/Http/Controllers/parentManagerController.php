@@ -16,10 +16,10 @@ class parentManagerController extends Controller
     
      //* functions to get the form view
      public function manual() {
-        return view("addParentManualy");
+        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentManualy");
     }
     public function document() { 
-        return view("addParentDocument");
+        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentDocument");
     }
     
     //* function to add parents

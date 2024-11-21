@@ -15,10 +15,10 @@ class studentManagerController extends Controller
 {
     //* functions to get the form view
     public function manual() {
-        return view("addStudentManualy");
+        return view("admin-subsystem.page-views.student-pages.add-student-pages.addStudentManualy");
     }
     public function document() { 
-        return view("addStudentDocument");
+        return view("admin-subsystem.page-views.student-pages.add-student-pages.addStudentDocument");
     }
     
     //* function to add students

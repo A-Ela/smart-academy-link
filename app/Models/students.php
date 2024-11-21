@@ -11,12 +11,12 @@ class students extends Model
 
     protected $primaryKey = 'studentID';
 
-    protected $fillable = ['name', 'year', 'classname'];
+    protected $fillable = ['name', 'year', 'classname','classID'];
 
     // Define the relationship to the ClassModel (class table)
     public function class()
     {
-        return $this->belongsTo(className::class, 'classname');
+        return $this->belongsTo(className::class, 'classID');
     }
 
     // Define the many-to-many relationship with ParentModel (parents table)

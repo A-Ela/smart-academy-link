@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class className extends Model
 {
     use HasFactory;
-
+    protected $table = 'classNames';
     protected $primaryKey = 'classID';
 
     protected $fillable = ['classname', 'year'];

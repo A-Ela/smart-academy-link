@@ -23,9 +23,10 @@ return new class extends Migration
         // Create a pivot table for events and classes
         Schema::create('class_event', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('eventID')->constrained('events')->onDelete('cascade');
-            $table->foreignId('classID')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('eventID')->constrained('events','eventID')->onDelete('cascade');
+            $table->foreignId('classID')->constrained('classNames','classID')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

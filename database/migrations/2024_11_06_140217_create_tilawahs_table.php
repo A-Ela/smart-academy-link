@@ -20,9 +20,10 @@ return new class extends Migration
             $table->date('dateEnd');
             $table->string('grade');
             $table->string('HafizRemark');
-            $table->foreignId('studentID')->constrained('students')->onDelete('cascade');
-            $table->foreignId('classID')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('studentID')->constrained('students','studentID')->onDelete('cascade');
+            $table->foreignId('classID')->constrained('classNames','classID')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

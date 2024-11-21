@@ -18,10 +18,10 @@
     </div>
 
     <!-- Include Sidebar Partial for Large Screens -->
-    @include('layouts.sidebar')
+    @include('admin-subsystem.partial-layouts.sidebar')
 
     <!-- Include Sidebar Partial for Mobile Screens -->
-    @include('layouts.sidebar-mobile')
+    @include('admin-subsystem.partial-layouts.sidebar-mobile')
 
     <!-- Main Content Area -->
     <div class="lg:ml-64 p-5">

@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('classname');
             $table->string('year');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 
@@ -22,3 +23,4 @@ return new class extends Migration
         Schema::dropIfExists('classNames');
     }
 };
+

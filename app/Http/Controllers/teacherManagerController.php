@@ -13,6 +13,13 @@ use App\Models\parents;
 
 class teacherManagerController extends Controller
 {
+    public function manual() {
+        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentManualy");
+    }
+    public function document() { 
+        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentDocument");
+    }
+    
     public function store(Request $request)
     {   
         //* add manually

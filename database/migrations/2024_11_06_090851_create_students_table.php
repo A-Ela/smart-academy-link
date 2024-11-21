@@ -12,8 +12,11 @@ return new class extends Migration
             $table->id('studentID'); // Primary key
             $table->string('name');
             $table->integer('year');
-            $table->foreignId('classID')->constrained('classes')->onDelete('cascade'); // Foreign key referencing classes table
+            $table->string('classname');
+            // Explicitly define the foreign key to match the primary key type
+            $table->foreignId('classID')->references('classID')->on('classNames')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

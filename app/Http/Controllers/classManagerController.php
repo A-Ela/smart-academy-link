@@ -13,15 +13,18 @@ use App\Models\parents;
 
 class classManagerController extends Controller
 {
-
-    //* add class by manually
-    public function addClassManually() {
-     
+    public function manual() {
+        return view("admin-subsystem.page-views.class-pages.add-class-pages.addClassManualy");
+    }
+    public function document() { 
+        return view("admin-subsystem.page-views.class-pages.add-class-pages.addClassDocument");
     }
 
+    //* add class by manually
+
     //* add class by document
-    public function addClassDoc() {
-        
+    public function store(){
+
     }
 
     //* remove class

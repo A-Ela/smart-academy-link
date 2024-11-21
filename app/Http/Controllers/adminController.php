@@ -16,11 +16,11 @@ class adminController extends Controller
 
     //* function to return the view of main dashboard page of admin
     public function getDashboard() {
-        
+        //! fix all these errors possibly by seeding the db
         //$adminID = Auth::id();
-       // $adminName = admins::find($adminID)->value("name");
+        //$adminName = admins::find($adminID)->value("name");
         
-        return view("adminDashboard"); //["adminName"=> $adminName]);
+        return view("admin-subsystem.page-views.main-page.adminDashboard");//,["adminName"=> $adminName]);
     }
 
 
@@ -31,7 +31,7 @@ class adminController extends Controller
         $years = className::select('year')->distinct()->pluck('year');//fetch all years
         $classes = className::all();  // Fetch all classes
 
-        return view('classList', compact('years', 'classes'));
+        return view('admin-subsystem.page-views.class-pages.classList', compact('years', 'classes'));
     }
 
 
@@ -41,8 +41,8 @@ class adminController extends Controller
         
         $years = className::select('year')->distinct()->pluck('year'); //fetch all years
         $classes = className::all();  // Fetch all classes
-
-        return view('classInfoSelector', compact('years', 'classes'));
+        if($years==null && $classes==null) { return view('admin-subsystem.page-views.class-pages.classInfoSelector'); }
+        return view('admin-subsystem.page-views.class-pages.classInfoSelector', compact('years', 'classes'));
     }
     
 
@@ -61,10 +61,10 @@ class adminController extends Controller
         if ($class) {
             // If class is found, retrieve students in that class
             $students = students::where('classID', $class->classID)->get();
-            return view('studentList', compact('students', 'year', 'classname'));
+            return view('admin-subsystem.page-views.student-pages.studentList', compact('students', 'year', 'classname'));
         } else {
             // If no class matches the criteria, return a message
-            return redirect()->route('classInfoSelector')->withErrors(['msg' => 'No class found for the selected year and class name.']);
+            return redirect()->route('admin-subsystem.page-views.class-pages.classInfoSelector')->withErrors(['msg' => 'No class found for the selected year and class name.']);
         }
     }
 
@@ -72,13 +72,13 @@ class adminController extends Controller
     //* function to return all teachers list alphabetically
     public function showTeacherList() {
         $teacher = teachers::orderBy('teacherName', 'asc')->get();
-        return view('teacherList',["teacher"=>$teacher]);
+        return view('admin-subsystem.page-views.teacher-pages.teacherList',["teacher"=>$teacher]);
 
     }
 
     public function getParentList() {
         $parent = parents::all();
 
-        return view("parentList",["parent"=>$parent]);
+        return view("admin-subsystem.page-views.parent-pages.parentList",["parent"=>$parent]);
     }
 }

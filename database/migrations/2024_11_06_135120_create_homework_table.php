@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('description');
             $table->date('dueDate');
             $table->string('subjectName');
-            $table->foreign('subjectName')->references('subjectName')->on('subjects')->onDelete('cascade');
-            $table->foreignId('classID')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('classID')->constrained('classNames','classID')->onDelete('cascade');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

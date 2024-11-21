@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->string('subjectName')->primary(); // subjectName as the primary key
-            $table->foreignId('teacherID')->constrained('teachers')->onDelete('cascade'); // foreign key to the teachers table
+            $table->foreignId('teacherID')->constrained('teachers','teacherID')->onDelete('cascade'); // foreign key to the teachers table
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 
