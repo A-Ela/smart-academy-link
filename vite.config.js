@@ -1,15 +1,14 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import postcss from './postcss.config.cjs';
+
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: ['resources/css/templatePage.css',
+                    'resources/css/dashboardOptions', 
+                    'resources/js/app.js'],
             refresh: true,
         }),
-    ],
-    css: {
-        postcss,
-    },
+    ]
 });
