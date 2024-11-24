@@ -14,10 +14,10 @@ use App\Models\parents;
 class teacherManagerController extends Controller
 {
     public function manual() {
-        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentManualy");
+        return view("admin-subsystem.page-views.teacher-pages.add-teacher-pages.addTeacherManualy");
     }
     public function document() { 
-        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentDocument");
+        return view("admin-subsystem.page-views.teacher-pages.add-teacher-pages.addTeacherDocument");
     }
     
     public function store(Request $request)
@@ -40,6 +40,12 @@ class teacherManagerController extends Controller
         ]);
 
         return redirect()->route('teachers.index')->with('success', 'Teacher added successfully!');
+    }
+    
+    //* view specific teacher info
+    public function show($id) {
+        $teacher = teachers::findOrFail($id);
+        return view('admin-subsystem.page-views.teacher-pages.teacherView', compact('teacher'));
     }
 
     //* remove teacher

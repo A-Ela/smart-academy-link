@@ -33,6 +33,7 @@ Route::post('/admin/student-list/store', [studentManagerController::class,'store
 
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
+Route::get('/admin/teacher-list/{id}', [teacherManagerController::class, 'show'])->name('teachers.show');
 Route::get('/admin/teacher-list/add-manualy',[teacherManagerController::class,'manual'])->name('add-teacher-manualy');
 Route::get('/admin/teacher-list/add-document',[teacherManagerController::class,'document'])->name('add-teacher-document');
 //use this to store any post either from manual or doc

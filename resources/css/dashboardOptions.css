@@ -1,0 +1,67 @@
+/* Style the header text */
+.welcome-text {
+    font-size: 2rem; /* Tailwind equivalent: text-2xl */
+    text-align: left;
+    margin-bottom: 1.5rem; /* Tailwind equivalent: mb-6 */
+    color: #2d3748; /* Tailwind's text-gray-800 */
+    padding-left: 5rem;
+}
+
+/* Main List Styling */
+.list-options {
+    display: grid; /* Use CSS grid */
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 1rem; /* Space between grid items */
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0 5rem; /* Center align the grid */
+    max-width: 900px; /* Optional: limit total width */
+}
+
+/* Individual List Items */
+.list-options li {
+    display: flex;
+    justify-content: center; /* Center the option-box */
+}
+
+/* Option Box Styling */
+.option-box {
+    width: 16rem; /* Fixed width for the square */
+    height: 15rem; /* Fixed height for the square */
+    background-color: #090b66; /* Tailwind's bg-gray-100 */
+    border: 1px solid #cbd5e0; /* Tailwind's border-gray-300 */
+    border-radius: 0.5rem; /* Tailwind's rounded-lg */
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: center; /* Center align content */
+    justify-content: center; /* Center content vertically */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.option-box:hover {
+    transform: scale(1.05);
+    background-color: #0c0f8b; /* Tailwind's bg-gray-200 */
+}
+
+/* Option Text */
+.option-box span {
+    font-size: 1rem; /* Tailwind equivalent: text-base */
+    color: white; /* Tailwind's text-gray-800 */
+    font-weight: 500; /* Tailwind's font-medium */
+    text-decoration: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .list-options {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .list-options {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+}

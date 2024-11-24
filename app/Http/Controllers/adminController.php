@@ -71,7 +71,7 @@ class adminController extends Controller
 
     //* function to return all teachers list alphabetically
     public function showTeacherList() {
-        $teacher = teachers::orderBy('teacherName', 'asc')->get();
+        $teacher = teachers::orderBy('teacherName', 'asc')->paginate(10);
         return view('admin-subsystem.page-views.teacher-pages.teacherList',["teacher"=>$teacher]);
 
     }
