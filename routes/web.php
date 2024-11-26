@@ -29,15 +29,18 @@ Route::get('/admin/student-list/add-manualy',[studentManagerController::class,'m
 Route::get('/admin/student-list/add-document',[studentManagerController::class,'document'])->name('add-student-document');
 //use this to store any post either from manual or doc
 Route::post('/admin/student-list/store', [studentManagerController::class,'store'])->name('student-list.store');
-
+//viewing specifci teacher info
+Route::get('/admin/student-list/{id}', [studentManagerController::class, 'show'])->name('teachers.show');
 
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
-Route::get('/admin/teacher-list/{id}', [teacherManagerController::class, 'show'])->name('teachers.show');
-Route::get('/admin/teacher-list/add-manualy',[teacherManagerController::class,'manual'])->name('add-teacher-manualy');
+//adding teachers
+Route::get('/admin/teacher-list/add-manualy', [teacherManagerController::class, 'manual'])->name('add-teacher-manualy');
 Route::get('/admin/teacher-list/add-document',[teacherManagerController::class,'document'])->name('add-teacher-document');
 //use this to store any post either from manual or doc
 Route::post('/admin/teacher-list/store', [teacherManagerController::class,'store'])->name('teacher-list.store');
+//viewing specifci teacher info
+Route::get('/admin/teacher-list/{id}', [teacherManagerController::class, 'show'])->name('teachers.show');
 
 
 //parent list

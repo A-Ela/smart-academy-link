@@ -1,0 +1,85 @@
+
+.add-teacher-container {
+    background-color: #ffffff; /* White background */
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Maximum width */
+    padding: 2rem; /* Spacing around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    text-align: center;
+  }
+  
+  /* Heading */
+  .add-teacher-heading {
+    font-size: 1.75rem; /* Larger font size */
+    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #2d3748; /* Dark gray text */
+  }
+  
+  /* Form Styling */
+  .add-teacher-form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 1rem; /* Space between form elements */
+  }
+  
+  /* Form Labels */
+  .form-label {
+    font-size: 1rem; /* Standard font size */
+    color: #4a5568; /* Medium gray */
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* Form Inputs */
+  .form-input {
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Inner padding */
+    border: 1px solid #cbd5e0; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Standard font size */
+    color: #2d3748; /* Dark gray text */
+    background-color: #f7fafc; /* Slightly off-white background */
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease; /* Smooth border-color transition */
+  }
+  
+  .form-input:focus {
+    border-color: #3182ce; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  /* Form Actions (Buttons) */
+  .form-actions {
+    display: flex;
+    justify-content: space-between; /* Spread buttons evenly */
+    gap: 1rem; /* Add space between buttons */
+  }
+  
+  /* Buttons */
+  .form-btn {
+    flex: 1; /* Equal button width */
+    padding: 0.75rem; /* Button padding */
+    font-size: 1rem; /* Standard font size */
+    font-weight: bold; /* Bold text */
+    color: #ffffff; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background-color transition */
+  }
+  
+  .submit-btn {
+    background-color: #3182ce; /* Blue background */
+  }
+  
+  .submit-btn:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+  }
+  
+  .cancel-btn {
+    background-color: #e53e3e; /* Red background */
+  }
+  
+  .cancel-btn:hover {
+    background-color: #c53030; /* Darker red on hover */
+  }

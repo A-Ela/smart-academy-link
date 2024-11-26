@@ -9,6 +9,8 @@ export default defineConfig({
                     'resources/css/dashboardOptions.css',
                     'resources/css/teacher-list/teacherList.css',
                     'resources/css/teacher-list/teacherView.css',
+                    'resources/css/teacher-list/teacherAddManual.css',
+                    'resources/css/student-list/studentList.css',
                     'resources/js/app.js'],
             refresh: true,
         }),

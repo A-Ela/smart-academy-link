@@ -38,6 +38,13 @@ class studentManagerController extends Controller
         return redirect()->route('student-list')->with('success', 'Student added successfully!');
     }
 
+    //* show specific student info
+    public function show($id) {
+        $student = students::findOrFail($id);
+        return view('admin-subsystem.page-views.student-pages.studentView', compact('teacher'));
+    }
+
+
     //* remove student
     public function destroy($id) {
         
