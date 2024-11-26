@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\admins;
 use App\Models\students;
-use App\Models\className;
-use App\Models\teachers;
-use App\Models\parents;
 
 
 class studentManagerController extends Controller
@@ -41,9 +37,8 @@ class studentManagerController extends Controller
     //* show specific student info
     public function show($id) {
         $student = students::findOrFail($id);
-        return view('admin-subsystem.page-views.student-pages.studentView', compact('teacher'));
+        return view('admin-subsystem.page-views.student-pages.studentView', compact('student'));
     }
-
 
     //* remove student
     public function destroy($id) {

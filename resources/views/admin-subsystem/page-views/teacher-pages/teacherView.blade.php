@@ -1,7 +1,7 @@
 @extends('admin-subsystem.template.adminTemplate');
 
 @section('css')
-    @vite('resources/css/teacher-list/teacherView.css')
+    @vite('resources/css/addManualStyle.css')
 @endsection
 
 @section('content')

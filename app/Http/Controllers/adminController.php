@@ -60,7 +60,7 @@ class adminController extends Controller
     
         if ($class) {
             // If class is found, retrieve students in that class
-            $students = students::where('classID', $class->classID)->get();
+            $students = students::where('classID', $class->classID)->paginate(10);
             return view('admin-subsystem.page-views.student-pages.studentList', compact('students', 'year', 'classname'));
         } else {
             // If no class matches the criteria, return a message
@@ -78,7 +78,6 @@ class adminController extends Controller
 
     public function getParentList() {
         $parent = parents::all();
-
         return view("admin-subsystem.page-views.parent-pages.parentList",["parent"=>$parent]);
     }
 }

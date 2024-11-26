@@ -1,20 +1,20 @@
 @extends('admin-subsystem.template.adminTemplate');
 
 @section('css')
-    @vite('resources/css/student-list/studentList.css')
+    @vite('resources/css/listStyle.css')    <!-- same style as teacher list --> 
 @endsection
 
 @section('content')
 <div>
-    <button class="modal-btn" id="openModalBtn">Add Teacher+</button>
+    <button class="modal-btn" id="openModalBtn">Add Student+</button>
     <h1 class="welcome-text">Student List</h1>
         
         <div class="teacher-list">
             <ul class="space-y-4">
-                @foreach($teacher as $teacher)
+                @foreach($student as $student)
                     <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
-                        <span class="text-lg font-medium">{{ $teacher->name }}</span>
-                        <a href="{{ route('students.show', $teacher->id) }}" class="btn btn-primary">View Profile</a>
+                        <span class="text-lg font-medium">{{ $student->name }}</span>
+                        <a href="{{ route('students.show', $student->id) }}" class="btn btn-primary">View Profile</a>
                     </li>
                 @endforeach
             </ul>
@@ -22,17 +22,17 @@
 
         <!-- Pagination Links -->
         <div class="mt-4">
-            {{ $teacher->links() }}  <!-- Laravel's built-in pagination links -->
+            {{ $student->links() }}  <!-- Laravel's built-in pagination links -->
         </div>
 
      <!-- Modal Structure -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
-      <h2>Add Teacher</h2>
+      <h2>Add Student</h2>
       <!-- Button to route to Add Manually -->
-      <button class="modal-btn" onclick="location.href='{{route('add-teacher-manualy')}}'">Add Manually</button>
+      <button class="modal-btn" onclick="location.href='{{route('add-student-manualy')}}'">Add Manually</button>
       <!-- Button to route to Add by Document -->
-      <button class="modal-btn" onclick="location.href='{{route('add-teacher-document')}}'">Add by Document</button>
+      <button class="modal-btn" onclick="location.href='{{route('add-student-document')}}'">Add by Document</button>
       <!-- Cancel Button -->
       <button class="modal-btn cancel-btn" id="closeModalBtn">Cancel</button>
     </div>

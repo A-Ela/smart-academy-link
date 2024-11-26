@@ -1,7 +1,7 @@
 @extends('admin-subsystem.template.adminTemplate');
 
 @section('css')
-    @vite('resources/css/teacher-list/teacherList.css')
+    @vite('resources/css/listStyle.css')
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <ul class="space-y-4">
                 @foreach($teacher as $teacher)
                     <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
-                        <span class="text-lg font-medium">{{ $teacher->name }}</span>
+                        <span class="text-lg font-medium">{{ $teacher->teacherName }}</span>
                         <a href="{{ route('teachers.show', $teacher->id) }}" class="btn btn-primary">View Profile</a>
                     </li>
                 @endforeach

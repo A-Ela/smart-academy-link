@@ -7,10 +7,10 @@ export default defineConfig({
         laravel({
             input: ['resources/css/templatePage.css',
                     'resources/css/dashboardOptions.css',
-                    'resources/css/teacher-list/teacherList.css',
+                    'resources/css/listStyle.css',
+                    'resources/css/addManualStyle.css',
                     'resources/css/teacher-list/teacherView.css',
-                    'resources/css/teacher-list/teacherAddManual.css',
-                    'resources/css/student-list/studentList.css',
+                    'resources/css/student-list/studentView.css',
                     'resources/js/app.js'],
             refresh: true,
         }),

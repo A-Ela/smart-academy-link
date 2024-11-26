@@ -30,7 +30,8 @@ Route::get('/admin/student-list/add-document',[studentManagerController::class,'
 //use this to store any post either from manual or doc
 Route::post('/admin/student-list/store', [studentManagerController::class,'store'])->name('student-list.store');
 //viewing specifci teacher info
-Route::get('/admin/student-list/{id}', [studentManagerController::class, 'show'])->name('teachers.show');
+Route::get('/admin/student-list/{id}', [studentManagerController::class, 'show'])->name('students.show');
+
 
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
@@ -49,6 +50,8 @@ Route::get('/admin/parent-list/add-manualy',[parentManagerController::class, 'ma
 Route::get('/admin/parent-list/add-document',[parentManagerController::class, 'document'])->name('add-parent-document');
 //use this to store any post either from manual or doc
 Route::post('/admin/parent-list/store', [parentManagerController::class, 'store'])->name('parent-list.store');  
+//viewing specifci teacher info
+Route::get('/admin/parent-list/{id}', [teacherManagerController::class, 'show'])->name('parents.show');
 
 
 
