@@ -6,7 +6,7 @@
 
 @section('content')
 <div>
-    <button class="modal-btn" id="openModalBtn">Add Parent+</button>
+    <button class="modal-btn" id="openModalBtn">Add Parent +</button>
     <h1 class="welcome-text">Parents List</h1>
         
         <div class="teacher-list">
@@ -28,7 +28,7 @@
      <!-- Modal Structure -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
-      <h2>Add Teacher</h2>
+      <h2>Add Parent</h2>
       <!-- Button to route to Add Manually -->
       <button class="modal-btn" onclick="location.href='{{route('add-parent-manualy')}}'">Add Manually</button>
       <!-- Button to route to Add by Document -->
@@ -61,6 +61,5 @@
       }
     });
 </script>
-
 </div>
 @endsection

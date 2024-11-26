@@ -6,7 +6,7 @@
 
 @section('content')
 <div>
-    <button class="modal-btn" id="openModalBtn">Add Student+</button>
+    <button class="modal-btn" id="openModalBtn">Add Student +</button>
     <h1 class="welcome-text">Student List</h1>
         
         <div class="teacher-list">

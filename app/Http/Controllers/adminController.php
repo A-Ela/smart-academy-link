@@ -77,7 +77,7 @@ class adminController extends Controller
     }
 
     public function getParentList() {
-        $parent = parents::all();
+        $parent = parents::paginate(10);
         return view("admin-subsystem.page-views.parent-pages.parentList",["parent"=>$parent]);
     }
 }

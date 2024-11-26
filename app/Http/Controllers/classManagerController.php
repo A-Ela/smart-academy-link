@@ -20,11 +20,11 @@ class classManagerController extends Controller
         return view("admin-subsystem.page-views.class-pages.add-class-pages.addClassDocument");
     }
 
-    //* add class by manually
-
-    //* add class by document
+    
     public function store(){
+        //* add class by manually
 
+        //* add class by document
     }
 
     //* remove class

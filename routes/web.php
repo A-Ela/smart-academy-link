@@ -19,8 +19,9 @@ Route::get('/admin/class-list',[adminController::class,'getClassList'])->name('c
 Route::get('/admin/class-list/add-manualy',[classManagerController::class,'manual'])->name('add-class-manualy');
 Route::get('/admin/class-list/add-document',[classManagerController::class,'document'])->name('add-class-document');
 //use this to store any post either from manual or doc
-//todo update the action field
 Route::post('/admin/class-list/store', [classManagerController::class,'store'])->name('class-list.store');
+//viewing specifci parent info
+Route::get('/admin/parent-list/{id}', [teacherManagerController::class, 'show'])->name('class.show');
 
 
 //student list
@@ -35,7 +36,6 @@ Route::get('/admin/student-list/{id}', [studentManagerController::class, 'show']
 
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
-//adding teachers
 Route::get('/admin/teacher-list/add-manualy', [teacherManagerController::class, 'manual'])->name('add-teacher-manualy');
 Route::get('/admin/teacher-list/add-document',[teacherManagerController::class,'document'])->name('add-teacher-document');
 //use this to store any post either from manual or doc
@@ -46,11 +46,11 @@ Route::get('/admin/teacher-list/{id}', [teacherManagerController::class, 'show']
 
 //parent list
 Route::get('/admin/parent-list',[adminController::class,'getParentList'])->name('parent-list');
-Route::get('/admin/parent-list/add-manualy',[parentManagerController::class, 'manualy'])->name('add-parent-manualy');
+Route::get('/admin/parent-list/add-manualy',[parentManagerController::class, 'manual'])->name('add-parent-manualy');
 Route::get('/admin/parent-list/add-document',[parentManagerController::class, 'document'])->name('add-parent-document');
 //use this to store any post either from manual or doc
 Route::post('/admin/parent-list/store', [parentManagerController::class, 'store'])->name('parent-list.store');  
-//viewing specifci teacher info
+//viewing specifci parent info
 Route::get('/admin/parent-list/{id}', [teacherManagerController::class, 'show'])->name('parents.show');
 
 

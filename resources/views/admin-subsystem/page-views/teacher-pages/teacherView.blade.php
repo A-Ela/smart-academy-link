@@ -16,6 +16,6 @@
             <!-- Add any other fields here -->
         </div>
 
-    <a href="{{ route('teachers.index') }}" class="mt-4 inline-block bg-blue-500 text-white p-2 rounded">Back to Teachers List</a>
+    <a href="{{ route('teachers-list') }}" class="mt-4 inline-block bg-blue-500 text-white p-2 rounded">Back to Teachers List</a>
 </div>
 @endsection

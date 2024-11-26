@@ -11,6 +11,8 @@ export default defineConfig({
                     'resources/css/addManualStyle.css',
                     'resources/css/teacher-list/teacherView.css',
                     'resources/css/student-list/studentView.css',
+                    'resources/css/parent-list/parentView.css',
+                    'resources/css/class-list/classView.css',
                     'resources/js/app.js'],
             refresh: true,
         }),
