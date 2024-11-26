@@ -7,7 +7,7 @@
 @section('content')
 <div>
   <div class="add-teacher-container">
-    <h1 class="add-teacher-heading">Add Teacher</h1>
+    <h1 class="add-teacher-heading">Add Parent</h1>
     
     <form class="add-teacher-form" method="POST" action="{{ route('parent-list.store') }}">
       @csrf
@@ -49,7 +49,7 @@
         id="password" 
         name="password" 
         class="form-input" 
-        placeholder="Enter a secure password" 
+        placeholder="Enter a password" 
         required>
       
       <!-- Buttons -->

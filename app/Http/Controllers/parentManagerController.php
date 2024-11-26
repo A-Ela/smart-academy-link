@@ -19,7 +19,7 @@ class parentManagerController extends Controller
     }
     
     //* function to add parents
-    public function addParent(Request $request)
+    public function store(Request $request)
     {       
         //* if adding by document
         if ($request->hasFile('document')) {

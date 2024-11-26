@@ -21,7 +21,7 @@ Route::get('/admin/class-list/add-document',[classManagerController::class,'docu
 //use this to store any post either from manual or doc
 Route::post('/admin/class-list/store', [classManagerController::class,'store'])->name('class-list.store');
 //viewing specifci parent info
-Route::get('/admin/parent-list/{id}', [teacherManagerController::class, 'show'])->name('class.show');
+Route::get('/admin/class-list/{id}', [classManagerController::class, 'show'])->name('class.show');
 
 
 //student list
@@ -51,7 +51,7 @@ Route::get('/admin/parent-list/add-document',[parentManagerController::class, 'd
 //use this to store any post either from manual or doc
 Route::post('/admin/parent-list/store', [parentManagerController::class, 'store'])->name('parent-list.store');  
 //viewing specifci parent info
-Route::get('/admin/parent-list/{id}', [teacherManagerController::class, 'show'])->name('parents.show');
+Route::get('/admin/parent-list/{id}', [parentManagerController::class, 'show'])->name('parents.show');
 
 
 

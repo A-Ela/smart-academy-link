@@ -7,7 +7,8 @@
 @section('content')
 <div>
     <button class="modal-btn" id="openModalBtn">Add class +</button>
-
+    
+    <h1 class="welcome-text">Class List</h1>
 
    <!-- Modal Structure -->
   <div class="modal-overlay" id="modalOverlay">
