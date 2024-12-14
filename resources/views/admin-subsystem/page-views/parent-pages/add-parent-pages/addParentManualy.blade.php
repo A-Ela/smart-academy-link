@@ -52,6 +52,9 @@
         placeholder="Enter a password" 
         required>
       
+      <!--  children field  -->
+      
+
       <!-- Buttons -->
       <div class="form-actions">
         <button type="submit" class="form-btn submit-btn">Add Parent</button>

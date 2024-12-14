@@ -35,8 +35,8 @@ class studentManagerController extends Controller
     }
 
     //* show specific student info
-    public function show($id) {
-        $student = students::findOrFail($id);
+    public function show($studentID) {
+        $student = students::findOrFail($studentID);
         return view('admin-subsystem.page-views.student-pages.studentView', compact('student'));
     }
 

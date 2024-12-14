@@ -19,5 +19,7 @@ class parents extends Authenticatable
         return $this->belongsToMany(students::class, 'parent_student', 'parentID', 'studentID');
     }
 
+    protected $with = ['students'];
+
     protected $hidden = ['password'];
 }

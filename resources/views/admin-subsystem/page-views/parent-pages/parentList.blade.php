@@ -11,18 +11,22 @@
         
         <div class="teacher-list">
             <ul class="space-y-4">
-                @foreach($parent as $parent)
-                    <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
-                        <span class="text-lg font-medium">{{ $parent->name }}</span>
-                        <a href="{{ route('parents.show', $parent->id) }}" class="btn btn-primary">View Profile</a>
-                    </li>
+                @foreach($parents as $p)
+                <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
+                    <span class="text-lg font-medium">{{ $p->name }}</span>
+                    @if(isset($p->parentID))
+                        <a href="{{ route('parents.show', ['parentID' => $p->parentID]) }}" class="btn btn-primary">View Profile</a>
+                    @else
+                        <span class="text-red-500">ID Missing</span>
+                    @endif
+                </li>
                 @endforeach
             </ul>
         </div>
 
         <!-- Pagination Links -->
         <div class="mt-4">
-            {{ $parent->links() }}  <!-- Laravel's built-in pagination links -->
+            {{ $parents->links() }}  <!-- Laravel's built-in pagination links -->
         </div>
 
      <!-- Modal Structure -->

@@ -12,6 +12,7 @@ Route::get('/admin',[adminController::class,'getDashboard'])->name('admin-dashbo
 
 //select class
 Route::get('/admin/class-selector',[adminController::class,'getClassInfo'])->name('class-selector');
+Route::post('/admin/class-selector/confirm', [classManagerController::class, 'handleClassSelection'])->name('class-selector.confirm');
 
 
 //class lists
@@ -21,7 +22,7 @@ Route::get('/admin/class-list/add-document',[classManagerController::class,'docu
 //use this to store any post either from manual or doc
 Route::post('/admin/class-list/store', [classManagerController::class,'store'])->name('class-list.store');
 //viewing specifci parent info
-Route::get('/admin/class-list/{id}', [classManagerController::class, 'show'])->name('class.show');
+Route::get('/admin/class-list/{classID}', [classManagerController::class, 'show'])->name('class.show');
 
 
 //student list
@@ -31,7 +32,7 @@ Route::get('/admin/student-list/add-document',[studentManagerController::class,'
 //use this to store any post either from manual or doc
 Route::post('/admin/student-list/store', [studentManagerController::class,'store'])->name('student-list.store');
 //viewing specifci teacher info
-Route::get('/admin/student-list/{id}', [studentManagerController::class, 'show'])->name('students.show');
+Route::get('/admin/student-list/{studentID}', [studentManagerController::class, 'show'])->name('students.show');
 
 
 //teacher list
@@ -41,7 +42,7 @@ Route::get('/admin/teacher-list/add-document',[teacherManagerController::class,'
 //use this to store any post either from manual or doc
 Route::post('/admin/teacher-list/store', [teacherManagerController::class,'store'])->name('teacher-list.store');
 //viewing specifci teacher info
-Route::get('/admin/teacher-list/{id}', [teacherManagerController::class, 'show'])->name('teachers.show');
+Route::get('/admin/teacher-list/{teacherID}', [teacherManagerController::class, 'show'])->name('teachers.show');
 
 
 //parent list
@@ -51,7 +52,7 @@ Route::get('/admin/parent-list/add-document',[parentManagerController::class, 'd
 //use this to store any post either from manual or doc
 Route::post('/admin/parent-list/store', [parentManagerController::class, 'store'])->name('parent-list.store');  
 //viewing specifci parent info
-Route::get('/admin/parent-list/{id}', [parentManagerController::class, 'show'])->name('parents.show');
+Route::get('/admin/parent-list/{parentID}', [parentManagerController::class, 'show'])->name('parents.show');
 
 
 

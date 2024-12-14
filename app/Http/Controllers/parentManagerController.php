@@ -64,8 +64,8 @@ class parentManagerController extends Controller
     }
 
     //* show specific parent info
-    public function show($id) {
-        $parent = parents::findOrFail($id);
+    public function show($parentID) {
+        $parent = parents::findOrFail($parentID);
         return view('admin-subsystem.page-views.parent-pages.parentView', compact('parent'));
     }
 

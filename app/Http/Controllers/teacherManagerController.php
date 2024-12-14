@@ -19,7 +19,7 @@ class teacherManagerController extends Controller
     public function store(Request $request)
     {   
         // Use dd() to debug the request data
-        dd($request->all());
+       // dd($request->all());
         
         //* add manually
         // Validate the incoming data
@@ -40,8 +40,8 @@ class teacherManagerController extends Controller
     }
     
     //* view specific teacher info
-    public function show($id) {
-        $teacher = teachers::findOrFail($id);
+    public function show($teacherID) {
+        $teacher = teachers::findOrFail($teacherID);
         return view('admin-subsystem.page-views.teacher-pages.teacherView', compact('teacher'));
     }
 

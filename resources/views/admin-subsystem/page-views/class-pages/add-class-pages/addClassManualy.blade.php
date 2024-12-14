@@ -12,7 +12,7 @@
     <form class="add-teacher-form" method="POST" action="{{ route('class-list.store') }}">
       @csrf
         <!-- Validation Errors -->
-        @if ($errors->any())
+       <!-- @if ($errors->any())
             <div class="error-messages">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif-->
 
       <!-- class Name Field -->
       <label for="classname" class="form-label">Class Name:</label>

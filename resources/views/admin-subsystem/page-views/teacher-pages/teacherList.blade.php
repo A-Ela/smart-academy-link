@@ -11,11 +11,15 @@
         
         <div class="teacher-list">
             <ul class="space-y-4">
-                @foreach($teacher as $teacher)
-                    <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
-                        <span class="text-lg font-medium">{{ $teacher->teacherName }}</span>
-                        <a href="{{ route('teachers.show', $teacher->id) }}" class="btn btn-primary">View Profile</a>
-                    </li>
+                @foreach($teacher as $t)
+                <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
+                    <span class="text-lg font-medium">{{ $t->teacherName }}</span>
+                    @if(isset($t->teacherID))
+                        <a href="{{ route('teachers.show', ['teacherID' => $t->teacherID]) }}" class="btn btn-primary">View Profile</a>
+                    @else
+                        <span class="text-red-500">ID Missing</span>
+                    @endif
+                </li>
                 @endforeach
             </ul>
         </div>

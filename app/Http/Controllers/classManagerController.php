@@ -27,6 +27,27 @@ class classManagerController extends Controller
         //* add class by document
     }
 
+     //* handle class selection
+     public function handleClassSelection(Request $request) {
+        // Validate the user input
+        $request->validate([
+            'classname' => 'required',
+            'year' => 'required'
+        ]);
+    
+        // Redirect to student list page with selected parameters
+        return redirect()->route('student-list', [
+            'year' => $request->year,
+            'classname' => $request->classname
+        ]);
+    }
+
+     //* show specific class info
+     public function show($classID) {
+        $className = className::findOrFail($classID);
+        return view('admin-subsystem.page-views.class-pages.classView', compact('className'));
+    }
+
     //* remove class
     public function destroy($id) {
         

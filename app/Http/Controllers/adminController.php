@@ -39,10 +39,11 @@ class adminController extends Controller
     //* function to fetch all class names and years for the selector to showcase student info
     public function getClassInfo() {
         
-        $years = className::select('year')->distinct()->pluck('year'); //fetch all years
-        $classes = className::all();  // Fetch all classes
-        if($years==null && $classes==null) { return view('admin-subsystem.page-views.class-pages.classInfoSelector'); }
-        return view('admin-subsystem.page-views.class-pages.classInfoSelector', compact('years', 'classes'));
+        // Fetch unique class names and years dynamically
+        $classNames = className::select('classname')->distinct()->pluck('classname');
+        $years = className::select('year')->distinct()->pluck('year');
+
+        return view('admin-subsystem.page-views.class-pages.classInfoSelector', compact('years', 'classNames'));
     }
     
 
@@ -71,13 +72,13 @@ class adminController extends Controller
 
     //* function to return all teachers list alphabetically
     public function showTeacherList() {
-        $teacher = teachers::orderBy('teacherName', 'asc')->paginate(10);
-        return view('admin-subsystem.page-views.teacher-pages.teacherList',["teacher"=>$teacher]);
+        $teachers = teachers::orderBy('teacherName', 'asc')->paginate(10);
+        return view('admin-subsystem.page-views.teacher-pages.teacherList',["teacher"=>$teachers]);
 
     }
 
     public function getParentList() {
-        $parent = parents::paginate(10);
-        return view("admin-subsystem.page-views.parent-pages.parentList",["parent"=>$parent]);
+        $parents = parents::with('students')->paginate(10); // Eager load students with pagination
+        return view('admin-subsystem.page-views.parent-pages.parentList', ['parents' => $parents]);
     }
 }
