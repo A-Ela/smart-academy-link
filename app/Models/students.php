@@ -11,7 +11,7 @@ class students extends Model
 
     protected $primaryKey = 'studentID';
 
-    protected $fillable = ['name', 'year', 'classname','classID'];
+    protected $fillable = ['name', 'year', 'classname'];
 
     // Define the relationship to the ClassModel (class table)
     public function class()

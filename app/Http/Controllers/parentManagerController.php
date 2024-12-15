@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Imports\ParentImport;
 use App\Models\parents;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -29,9 +29,8 @@ class parentManagerController extends Controller
         ]);
 
         // Handle the file upload and import the data
-        //! fix excel dependencie or find new way to handle docs
         $file = $request->file('document');
-        Excel::import(new ParentsImport, $file); // Use the import class
+        Excel::import(new ParentImport, $file); // Use the import class
 
         return redirect()->back()->with('success', 'Parents and their students have been successfully added.');
         }

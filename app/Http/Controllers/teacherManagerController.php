@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\teachers;
-
+use App\Imports\TeachersImport;
 
 class teacherManagerController extends Controller
 {
@@ -18,8 +18,17 @@ class teacherManagerController extends Controller
     
     public function store(Request $request)
     {   
-        // Use dd() to debug the request data
-       // dd($request->all());
+        //* add teacher by document
+        if ($request->hasFile('document')) {
+            $request->validate([
+                'file' => 'required|mimes:xlsx,xls,csv',  // Ensure the file is an Excel file
+            ]);
+        
+            // Import the teachers data
+            Excel::import(new TeachersImport, $request->file('file'));
+        
+            return back()->with('success', 'Teachers imported successfully!');
+        }
         
         //* add manually
         // Validate the incoming data

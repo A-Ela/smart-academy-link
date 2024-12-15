@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\admins;
-use App\Models\students;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\className;
-use App\Models\teachers;
-use App\Models\parents;
+use App\Imports\ClassnameImport;
 
 
 class classManagerController extends Controller
@@ -21,10 +18,32 @@ class classManagerController extends Controller
     }
 
     
-    public function store(){
-        //* add class by manually
-
+    public function store(Request $request){
         //* add class by document
+        if ($request->hasFile('document')) {
+            $request->validate([
+                'file' => 'required|mimes:xlsx,xls,csv',  // Ensure the file is an Excel file
+            ]);
+        
+            // Import the students data
+            Excel::import(new ClassnameImport, $request->file('file'));
+
+            return back()->with('success', 'Students imported successfully!');
+        }
+        
+        //* add class by manually
+        $request->validate([
+            'classname' => 'required|string|max:255',
+            'year' => 'required|integer|max:1',
+        ]);
+
+        // Create a new teacher record
+        className::create([
+            'classname' => $request->classname,
+            'year' => $request->year,
+        ]);
+
+        return redirect()->route('class-list')->with('success', 'Teacher added successfully!');
     }
 
      //* handle class selection

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\students;
+use App\Imports\StudentImport;
 
 
 class studentManagerController extends Controller
@@ -22,11 +23,14 @@ class studentManagerController extends Controller
     {
         //* add student by document
         if ($request->hasFile('document')) {
-            $file = $request->file('document');
+            $request->validate([
+                'file' => 'required|mimes:xlsx,xls,csv',  // Ensure the file is an Excel file
+            ]);
+        
+            // Import the students data
+            Excel::import(new StudentImport, $request->file('file'));
 
-            // Process the document (CSV/Excel parsing logic)
-            // Example: Use a package like Laravel-Excel
-            return response()->json(['message' => 'Document processed and students added!']);
+            return back()->with('success', 'Students imported successfully!');
         }
 
         //* add student by manually

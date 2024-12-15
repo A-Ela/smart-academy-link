@@ -9,6 +9,7 @@ export default defineConfig({
                     'resources/css/dashboardOptions.css',
                     'resources/css/listStyle.css',
                     'resources/css/addManualStyle.css',
+                    'resources/css/addDocumentStyle.css',
                     'resources/css/teacher-list/teacherView.css',
                     'resources/css/student-list/studentView.css',
                     'resources/css/parent-list/parentView.css',
