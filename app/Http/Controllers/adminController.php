@@ -61,11 +61,11 @@ class adminController extends Controller
     
         if ($class) {
             // If class is found, retrieve students in that class
-            $students = students::where('classID', $class->classID)->paginate(10);
+            $students = students::where('classname', $class->classname)->paginate(10);
             return view('admin-subsystem.page-views.student-pages.studentList', compact('students', 'year', 'classname'));
         } else {
             // If no class matches the criteria, return a message
-            return redirect()->route('admin-subsystem.page-views.class-pages.classInfoSelector')->withErrors(['msg' => 'No class found for the selected year and class name.']);
+            return redirect()->route('class-selector')->withErrors(['msg' => 'No class found for the selected year and class name.']);
         }
     }
 

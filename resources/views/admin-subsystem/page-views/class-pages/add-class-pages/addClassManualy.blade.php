@@ -35,9 +35,9 @@
       <!-- year Field -->
       <label for="year" class="form-label">Year:</label>
       <input 
-        type="Year" 
-        id="Year" 
-        name="Year" 
+        type="year" 
+        id="year" 
+        name="year" 
         class="form-input" 
         placeholder="Enter Year" 
         required>

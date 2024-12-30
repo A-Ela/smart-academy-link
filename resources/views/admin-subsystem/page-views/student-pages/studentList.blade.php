@@ -11,7 +11,7 @@
         
         <div class="teacher-list">
             <ul class="space-y-4">
-                @foreach($student as $s)
+                @foreach($students as $s)
                 <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
                     <span class="text-lg font-medium">{{ $s->name }}</span>
                     @if(isset($s->studentID))
@@ -26,7 +26,7 @@
 
         <!-- Pagination Links -->
         <div class="mt-4">
-            {{ $student->links() }}  <!-- Laravel's built-in pagination links -->
+            {{ $students->links() }}  <!-- Laravel's built-in pagination links -->
         </div>
 
      <!-- Modal Structure -->

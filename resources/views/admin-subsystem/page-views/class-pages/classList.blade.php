@@ -10,6 +10,31 @@
     
     <h1 class="welcome-text">Class List</h1>
 
+    <div class="class-list">
+      @foreach($years as $year)
+          <div class="year-group">
+              <h2 class="text-xl font-bold text-blue-600 mb-4">Year: {{ $year }}</h2>
+              <ul class="space-y-4">
+                  @foreach($classes->where('year', $year) as $class)
+                      <li class="flex justify-between items-center p-4 bg-gray-100 rounded-md shadow">
+                          <span class="text-lg font-medium">{{ $class->classname }}</span>
+                          @if(isset($class->classID))
+                              <!-- Updated link with query parameters for year and class name -->
+                            <a href="{{ route('student-list', ['year' => $year, 'classname' => $class->classname]) }}" 
+                              class="btn btn-primary">
+                               View Class
+                           </a>
+                          @else
+                              <span class="text-red-500">ID Missing</span>
+                          @endif
+                      </li>
+                  @endforeach
+              </ul>
+          </div>
+      @endforeach
+  </div>
+  
+  
    <!-- Modal Structure -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">

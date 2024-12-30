@@ -13,8 +13,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('year');
             $table->string('classname');
-            // Explicitly define the foreign key to match the primary key type
-            $table->foreignId('classID')->references('classID')->on('classNames')->onDelete('cascade');
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

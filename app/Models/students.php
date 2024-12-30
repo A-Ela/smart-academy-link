@@ -14,10 +14,10 @@ class students extends Model
     protected $fillable = ['name', 'year', 'classname'];
 
     // Define the relationship to the ClassModel (class table)
-    public function class()
-    {
-        return $this->belongsTo(className::class, 'classID');
-    }
+    //public function class()
+    //{
+      //  return $this->belongsTo(className::class, 'classID');
+    //}
 
     // Define the many-to-many relationship with ParentModel (parents table)
     public function parents()

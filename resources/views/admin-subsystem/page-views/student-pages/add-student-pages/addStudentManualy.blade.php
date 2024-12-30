@@ -52,25 +52,6 @@
         placeholder="Enter class name of student" 
         required>
 
-        <!-- classname Field -->
-      <label for="classname" class="form-label">class name:</label>
-      <input 
-        type="classname" 
-        id="classname" 
-        name="classname" 
-        class="form-input" 
-        placeholder="Enter class name of student" 
-        required>
-
-        <!-- classID Field -->
-      <label for="classID" class="form-label">class ID:</label>
-      <input 
-        type="classID" 
-        id="classID" 
-        name="classID" 
-        class="form-input" 
-        placeholder="Enter class ID of student" 
-        required>
       
       <!-- Buttons -->
       <div class="form-actions">
