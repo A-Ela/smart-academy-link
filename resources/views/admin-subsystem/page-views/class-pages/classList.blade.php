@@ -38,7 +38,7 @@
    <!-- Modal Structure -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
-      <h2>Add Parent</h2>
+      <h2>Add Class</h2>
       <!-- Button to route to Add Manually -->
       <button class="modal-btn" onclick="location.href='{{route('add-class-manualy')}}'">Add Manually</button>
       <!-- Button to route to Add by Document -->

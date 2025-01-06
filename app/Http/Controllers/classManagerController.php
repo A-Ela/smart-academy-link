@@ -34,7 +34,7 @@ class classManagerController extends Controller
         //* add class by manually
         $request->validate([
             'classname' => 'required|string|max:255',
-            'year' => 'required|integer|max:1',
+            'year' => 'required|string|max:1',
         ]);
 
         // Create a new teacher record
@@ -43,7 +43,7 @@ class classManagerController extends Controller
             'year' => $request->year,
         ]);
 
-        return redirect()->route('class-list')->with('success', 'Teacher added successfully!');
+        return redirect()->route('class-list')->with('success', 'Class added successfully!');
     }
 
      //* handle class selection
