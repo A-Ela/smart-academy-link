@@ -6,7 +6,7 @@
 
 @section('content')
 <div>
-   student info
+   parent info
    <h1 class="text-3xl font-bold mb-4">{{ $parent->name }}'s Profile</h1>
 
         <div class="profile-details">
@@ -16,6 +16,6 @@
             <!-- Add any other fields here -->
         </div>
 
-    <a href="{{ route('parent-list') }}" class="mt-4 inline-block bg-blue-500 text-white p-2 rounded">Back to student List</a>
+    <a href="{{ route('parent-list') }}" class="mt-4 inline-block bg-blue-500 text-white p-2 rounded">Back to Parents List</a>
 </div>
 @endsection

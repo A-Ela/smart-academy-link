@@ -1,7 +1,9 @@
-@extends('admin-subsystem.template.adminTemplate');
+@extends('admin-subsystem.template.adminTemplate')
 
 @section('css')
     @vite('resources/css/addManualStyle.css')
+    <!-- Include Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -22,7 +24,7 @@
             </div>
         @endif
 
-      <!-- parent Name Field -->
+      <!-- Parent Name Field -->
       <label for="name" class="form-label">Name:</label>
       <input 
         type="text" 
@@ -52,8 +54,15 @@
         placeholder="Enter a password" 
         required>
       
-      <!--  children field  -->
-      
+      <!-- Children Field -->
+      <label for="children" class="form-label">Children:</label>
+      <select 
+        id="children" 
+        name="student_ids[]" 
+        class="form-input select2" 
+        multiple 
+        required>
+      </select>
 
       <!-- Buttons -->
       <div class="form-actions">
@@ -62,6 +71,38 @@
       </div>
     </form>
   </div>
-
 </div>
+
+<!-- Include jQuery and Select2 JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Select students",
+            allowClear: true,
+            ajax: {
+                url: '{{ route('students.search') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term // search term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.studentID
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+    });
+</script>
 @endsection

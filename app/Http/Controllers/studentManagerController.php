@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\students;
 use App\Imports\StudentImport;
-
+use App\Models\className;
 
 class studentManagerController extends Controller
 {
     //* functions to get the form view
     public function manual() {
-        return view("admin-subsystem.page-views.student-pages.add-student-pages.addStudentManualy");
+        $classes = className::all(); // Fetch all classes
+        return view("admin-subsystem.page-views.student-pages.add-student-pages.addStudentManualy", compact('classes'));
     }
     public function document() { 
         return view("admin-subsystem.page-views.student-pages.add-student-pages.addStudentDocument");
@@ -34,8 +35,18 @@ class studentManagerController extends Controller
         }
 
         //* add student by manually
-        students::create($request->only('name', 'year','classname'));
-        return redirect()->route('student-list')->with('success', 'Student added successfully!');
+        // Validate the input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'year' => 'required|integer',
+            'classname' => 'required|string|max:255',
+            'classID' => 'required|exists:classNames,classID', // Validate classID
+        ]);
+
+        // Create the student
+        students::create($request->only('name', 'year', 'classname', 'classID'));
+
+        return back()->with('success', 'Student added successfully!');
     }
 
     //* show specific student info
@@ -43,9 +54,18 @@ class studentManagerController extends Controller
         $student = students::findOrFail($studentID);
         return view('admin-subsystem.page-views.student-pages.studentView', compact('student'));
     }
-
+     
     //* remove student
     public function destroy($id) {
         
+    }
+
+    //* search students
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        $students = students::where('name', 'LIKE', "%{$query}%")->get();
+
+        return response()->json($students);
     }
 }

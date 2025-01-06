@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('year');
             $table->string('classname');
+            $table->unsignedBigInteger('classID'); // Add 'classID' column
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

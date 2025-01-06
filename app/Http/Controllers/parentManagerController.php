@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Imports\ParentImport;
 use App\Models\parents;
+use App\Models\students;
 use Maatwebsite\Excel\Facades\Excel;
 
 class parentManagerController extends Controller
 {
-    
-     //* functions to get the form view
-     public function manual() {
-        return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentManualy");
+    //* functions to get the form view
+    public function manual() {
+        //* pass student info to parents add manually page   
+        $students = students::all();
+        return view('admin-subsystem.page-views.parent-pages.add-parent-pages.addParentManualy', compact('students'));
     }
+
     public function document() { 
         return view("admin-subsystem.page-views.parent-pages.add-parent-pages.addParentDocument");
     }
@@ -24,18 +27,18 @@ class parentManagerController extends Controller
         //* if adding by document
         if ($request->hasFile('document')) {
             // Validate the uploaded document
-        $request->validate([
-            'document' => 'required|mimes:csv,xlsx,xls|max:2048', // Limit file size and type
-        ]);
+            $request->validate([
+                'document' => 'required|mimes:csv,xlsx,xls|max:2048', // Limit file size and type
+            ]);
 
-        // Handle the file upload and import the data
-        $file = $request->file('document');
-        Excel::import(new ParentImport, $file); // Use the import class
+            // Handle the file upload and import the data
+            $file = $request->file('document');
+            Excel::import(new ParentImport, $file); // Use the import class
 
-        return redirect()->back()->with('success', 'Parents and their students have been successfully added.');
+            return redirect()->back()->with('success', 'Parents and their students have been successfully added.');
         }
         
-        //* if adding by manually
+        //* if adding manually
         // Validate input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -58,8 +61,7 @@ class parentManagerController extends Controller
         // Attach students to the parent using the pivot table
         $parent->students()->attach($validated['student_ids']);
 
-        return redirect()->back()->with('success', 'Parent and student associations added successfully!');
-            
+        return redirect()->route('parent-list')->with('success', 'Parent and student associations added successfully!');
     }
 
     //* show specific parent info

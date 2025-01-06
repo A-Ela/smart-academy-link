@@ -33,6 +33,8 @@ Route::get('/admin/student-list/add-document',[studentManagerController::class,'
 Route::post('/admin/student-list/store', [studentManagerController::class,'store'])->name('student-list.store');
 //viewing specifci teacher info
 Route::get('/admin/student-list/{studentID}', [studentManagerController::class, 'show'])->name('students.show');
+//searching for student route
+Route::get('/students/search', [studentManagerController::class, 'search'])->name('students.search');
 
 
 //teacher list

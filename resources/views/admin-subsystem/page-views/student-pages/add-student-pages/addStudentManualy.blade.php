@@ -11,16 +11,7 @@
     
     <form class="add-teacher-form" method="POST" action="{{ route('student-list.store') }}">
       @csrf
-        <!-- Validation Errors -->
-        @if ($errors->any())
-            <div class="error-messages">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        
 
       <!-- student Name Field -->
       <label for="name" class="form-label">Name:</label>
@@ -52,6 +43,13 @@
         placeholder="Enter class name of student" 
         required>
 
+      <!-- Add a dropdown or input field for classID -->
+      <label for="classID" class="form-label">Class:</label>
+      <select id="classID" name="classID" class="form-input" required>
+          @foreach ($classes as $class)
+              <option value="{{ $class->classID }}">{{ $class->classname }}</option>
+          @endforeach
+      </select>
       
       <!-- Buttons -->
       <div class="form-actions">
