@@ -8,21 +8,21 @@ class ProgressController extends Controller
 {
     public function performance()
     {
-        return view('progress.performance');
+        return view('teacher-subsystem.progress.performance');
     }
 
     public function academic()
     {
-        return view('progress.academic');
+        return view('teacher-subsystem.progress.academic');
     }
 
     public function diniyyah()
     {
-        return view('progress.diniyyah');
+        return view('teacher-subsystem.progress.diniyyah');
     }
 
     public function tarbiah()
     {
-        return view('progress.tarbiah');
+        return view('teacher-subsystem.progress.tarbiah');
     }
 }

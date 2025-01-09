@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->date('due_date');
+            $table->string('subject_name');
             $table->timestamps();
         });
     }

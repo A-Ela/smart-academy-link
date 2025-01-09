@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;
+use App\Models\students;
 use App\Models\Academic;
 use App\Models\Diniyyah;
 use App\Models\Tarbiah;
@@ -15,7 +15,7 @@ class GradeController extends Controller
     // Show the grading form for Academic
     public function academic($student_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = students::findOrFail($student_id);
         return view('teacher-subsystem.grades.academic', compact('student'));
     }
 
@@ -48,7 +48,7 @@ class GradeController extends Controller
     // Show the grading form for Diniyyah
     public function diniyyah($student_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = students::findOrFail($student_id);
         return view('grades.diniyyah', compact('student'));
     }
 
@@ -81,7 +81,7 @@ class GradeController extends Controller
     // Show the grading form for Tarbiah
     public function tarbiah($student_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = students::findOrFail($student_id);
         return view('grades.tarbiah', compact('student'));
     }
 
@@ -114,7 +114,7 @@ class GradeController extends Controller
     // Show the grading form (generic) for any student
     public function show($student_id)
     {
-        $student = Student::findOrFail($student_id);
+        $student = students::findOrFail($student_id);
         return view('grades.show', compact('student'));
     }
 

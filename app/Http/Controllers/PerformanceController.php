@@ -11,13 +11,13 @@ class PerformanceController extends Controller
     public function index()
     {
         $performances = Performance::all();
-        return view('performance.index', compact('performances'));
+        return view('teacher-subsystem.performance.index', compact('performances'));
     }
 
     // Show the form for creating a new performance
     public function create()
     {
-        return view('performance.create');
+        return view('teacher-subsystem.performance.create');
     }
 
     // Store a newly created performance in storage
@@ -35,14 +35,14 @@ class PerformanceController extends Controller
             'score' => $request->score,
         ]);
 
-        return redirect()->route('performance.index')->with('success', 'Performance record added successfully!');
+        return redirect()->route('teacher-subsystem.performance.index')->with('success', 'Performance record added successfully!');
     }
 
     // Show the form for editing the specified performance
     public function edit($id)
     {
         $performance = Performance::findOrFail($id);
-        return view('performance.edit', compact('performance'));
+        return view('teacher-subsystem.performance.edit', compact('performance'));
     }
 
     // Update the specified performance in storage
@@ -70,6 +70,6 @@ class PerformanceController extends Controller
         $performance = Performance::findOrFail($id);
         $performance->delete();
 
-        return redirect()->route('performance.index')->with('success', 'Performance record deleted successfully!');
+        return redirect()->route('teacher-subsystem.performance.index')->with('success', 'Performance record deleted successfully!');
     }
 }

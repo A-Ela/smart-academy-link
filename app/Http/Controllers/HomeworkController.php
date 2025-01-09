@@ -10,7 +10,7 @@ class HomeworkController extends Controller
     // Show the form for creating homework
     public function create()
     {
-        return view('homework.create');
+        return view('teacher-subsystem.homework.create');
     }
 
     // Store the homework data in the database
@@ -27,7 +27,7 @@ class HomeworkController extends Controller
             'description' => $request->description,
             'due_date' => $request->due_date,
             'subject_name' => $request->subject_name,
-            'class_id' => $request->class_id,
+            'class_id' => $request->classID,
         ]);
 
         return redirect()->route('homework.index')->with('success', 'Homework assigned successfully');
@@ -37,7 +37,7 @@ class HomeworkController extends Controller
     public function edit($id)
     {
         $homework = Homework::findOrFail($id);
-        return view('homework.edit', compact('homework'));
+        return view('teacher-subsystem.homework.edit', compact('homework'));
     }
 
     // Update the homework data in the database
@@ -56,7 +56,7 @@ class HomeworkController extends Controller
             'description' => $request->description,
             'due_date' => $request->due_date,
             'subject_name' => $request->subject_name,
-            'class_id' => $request->class_id,
+            'class_id' => $request->classID,
         ]);
 
         return redirect()->route('homework.create')->with('success', 'Homework updated successfully');
@@ -75,7 +75,7 @@ class HomeworkController extends Controller
     public function index()
     {
         $homeworks = Homework::all();  // Fetch all homework assignments from the database
-        return view('homework.index', compact('homeworks'));  // Pass the homework data to the view
+        return view('teacher-subsystem.homework.index', compact('homeworks'));  // Pass the homework data to the view
     }
 
     // View the list of all homework assignments
@@ -85,7 +85,7 @@ class HomeworkController extends Controller
         $homeworks = Homework::all(); // Ensure you have a Homework model
 
         // Return to the Blade view with data
-        return view('homework.list', compact('homeworks'));
+        return view('teacher-subsystem.homework.list', compact('homeworks'));
     }
 }
 

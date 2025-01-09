@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\students;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -10,10 +10,10 @@ class StudentController extends Controller
     public function index()
     {
         // Fetch specific columns (name, ic_no, class, year) from the students table
-        $students = Student::select('name', 'ic_no', 'class', 'year')->get();
+        $students = students::select('name', 'ic_no', 'classname', 'year')->get();
 
         // Pass the students data to the view
-        return view('students.index', compact('students'));
+        return view('teacher-subsystem.students.index', compact('students'));
     }
 }
 
