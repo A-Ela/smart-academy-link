@@ -1,11 +1,19 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\studentManagerController;
 use App\Http\Controllers\parentManagerController;
 use App\Http\Controllers\teacherManagerController;
 use App\Http\Controllers\classManagerController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\HomeworkController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\PerformanceController;
+use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\GradeController;
+
 
 //* routing for admin
 Route::get('/admin',[adminController::class,'getDashboard'])->name('admin-dashboard');
@@ -59,6 +67,98 @@ Route::get('/admin/parent-list/{parentID}', [parentManagerController::class, 'sh
 
 
 //* routing for teacher
+Route::get('/teacher-dashboard', function () {
+    return view('teacher-subsystem.dashboard');  // Ensure 'dashboard.blade.php' exists in resources/views
+});
+
+// Route for student list
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+
+// Route to show the form for creating homework
+Route::get('/homework/create', [HomeworkController::class, 'create'])->name('homework.create');
+
+// Route to store homework (POST method)
+Route::post('/homework', [HomeworkController::class, 'store'])->name('homework.store');
+
+// Route to show the form for editing homework
+Route::get('/homework/{id}/edit', [HomeworkController::class, 'edit'])->name('homework.edit');
+
+// Route to update homework (PUT method)
+Route::put('/homework/{id}', [HomeworkController::class, 'update'])->name('homework.update');
+
+// Route to delete homework (DELETE method)
+Route::delete('/homework/{id}', [HomeworkController::class, 'destroy'])->name('homework.destroy');
+
+// Route for the Homework List page
+Route::get('/homework', [HomeworkController::class, 'index'])->name('homework.index');
+
+// Route for viewing the list of homework
+Route::get('/homework/list', [HomeworkController::class, 'list'])->name('homework.list');
+
+// Routes for events
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+// Route to show the form for editing an event
+Route::get('/events/{id}/edit', [EventController::class, 'edit'])->name('events.edit');
+
+// Route to update an event (PUT method)
+Route::put('/events/{id}', [EventController::class, 'update'])->name('events.update');
+
+// Route to delete an event (DELETE method)
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+
+// Route for displaying the calendar page
+Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+
+// Route for fetching events as JSON
+Route::get('/calendar-events', [EventController::class, 'fetchEvents'])->name('calendar.events');
+
+// Routes for progress and progress pages
+Route::get('/progress/performance', [ProgressController::class, 'performance'])->name('progress.performance');
+Route::get('/progress/academic', [ProgressController::class, 'academic'])->name('progress.academic');
+Route::get('/progress/diniyyah', [ProgressController::class, 'diniyyah'])->name('progress.diniyyah');
+Route::get('/progress/tarbiah', [ProgressController::class, 'tarbiah'])->name('progress.tarbiah');
+
+// Routes for performance management
+Route::get('/performance', [PerformanceController::class, 'index'])->name('performance.index'); // View all performances
+Route::get('/performance/create', [PerformanceController::class, 'create'])->name('performance.create'); // Show form to create a new performance
+Route::post('/performance', [PerformanceController::class, 'store'])->name('performance.store'); // Store a new performance
+Route::get('/performance/{id}/edit', [PerformanceController::class, 'edit'])->name('performance.edit'); // Show form to edit performance
+Route::put('/performance/{id}', [PerformanceController::class, 'update'])->name('performance.update'); // Update an existing performance
+Route::delete('/performance/{id}', [PerformanceController::class, 'destroy'])->name('performance.destroy'); // Delete a performance
+
+// Route for grading
+Route::get('/grades', [GradeController::class, 'index'])->name('grades.index');
+Route::post('/grades', [GradeController::class, 'store'])->name('grades.store');
+
+// Academic Progress
+Route::get('/academic-progress', [GradeController::class, 'academicProgress'])->name('academic.progress');
+
+// Diniyyah Progress
+Route::get('/diniyyah-progress', [GradeController::class, 'diniyyahProgress'])->name('diniyyah.progress');
+
+// Tarbiah Progress
+Route::get('/tarbiah-progress', [GradeController::class, 'tarbiahProgress'])->name('tarbiah.progress');
+
+// Form of grading
+Route::get('/grades/{studentId}/create', [GradeController::class, 'create'])->name('grades.create');
+
+// Store grades and feedback
+Route::post('/grades/{studentId}', [GradeController::class, 'store'])->name('grades.store');
+
+// Routes for grading specific student
+Route::get('/grading/{student_id}', [GradeController::class, 'show'])->name('grading.show');
+Route::post('/grading/{student_id}', [GradeController::class, 'store'])->name('grading.store');
+
+// New Routes for Academic, Diniyyah, and Tarbiah Grading
+Route::get('/academic/{student_id}', [GradeController::class, 'academic'])->name('academic.grade');
+Route::get('/diniyyah/{student_id}', [GradeController::class, 'diniyyah'])->name('diniyyah.grade');
+Route::get('/tarbiah/{student_id}', [GradeController::class, 'tarbiah'])->name('tarbiah.grade');
+Route::post('/academic/{student_id}', [GradeController::class, 'storeAcademic'])->name('academic.store');
+Route::post('/diniyyah/{student_id}', [GradeController::class, 'storeDiniyyah'])->name('diniyyah.store');
+Route::post('/tarbiah/{student_id}', [GradeController::class, 'storeTarbiah'])->name('tarbiah.store');
 
 
 

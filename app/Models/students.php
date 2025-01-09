@@ -11,7 +11,7 @@ class students extends Model
 
     protected $primaryKey = 'studentID';
 
-    protected $fillable = ['name', 'year', 'classname', 'classID']; // Add 'classID' here
+    protected $fillable = ['name', 'year', 'classname', 'classID', 'ic_no']; // Add 'classID' here
 
     // Define the relationship to the ClassModel (class table)
     public function class()
@@ -23,5 +23,15 @@ class students extends Model
     public function parents()
     {
         return $this->belongsToMany(parents::class, 'parent_student', 'studentID', 'parentID');
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function feedback()
+    {
+        return $this->hasOne(StudentFeedback::class);
     }
 }

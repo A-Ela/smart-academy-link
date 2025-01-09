@@ -8,6 +8,8 @@ return new class extends Migration
 {
     public function up()
     {
+        Schema::dropIfExists('classNames');
+
         Schema::create('classNames', function (Blueprint $table) {
             $table->id('classID'); // Primary key
             $table->string('classname');
@@ -19,7 +21,16 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('class_teacher');
+        // Drop foreign key constraints
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropForeign(['classID']);
+        });
+
+        Schema::table('class_teacher', function (Blueprint $table) {
+            $table->dropForeign(['classID']);
+        });
+
+        // Drop the table
         Schema::dropIfExists('classNames');
     }
 };

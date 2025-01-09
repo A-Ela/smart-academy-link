@@ -14,8 +14,12 @@ return new class extends Migration
             $table->integer('year');
             $table->string('classname');
             $table->unsignedBigInteger('classID'); // Add 'classID' column
+            $table->string('ic_no')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
+
+            // Foreign key constraint
+            $table->foreign('classID')->references('classID')->on('classNames')->onDelete('cascade');
         });
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -20,10 +21,14 @@ return new class extends Migration
         // Create a pivot table for the many-to-many relationship
         Schema::create('class_teacher', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacherID')->constrained('teachers')->onDelete('cascade');
-            $table->foreignId('classID')->constrained('classNames')->onDelete('cascade');
+            $table->unsignedBigInteger('teacherID');
+            $table->unsignedBigInteger('classID');
             $table->timestamps();
             $table->engine = 'InnoDB';
+
+            // Foreign key constraints
+            $table->foreign('teacherID')->references('teacherID')->on('teachers')->onDelete('cascade');
+            $table->foreign('classID')->references('classID')->on('classNames')->onDelete('cascade');
         });
     }
 
