@@ -10,7 +10,7 @@ class CreateAcademicsTable extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('studentID');
             $table->integer('bm')->nullable();
             $table->integer('bi')->nullable();
             $table->integer('sains')->nullable();
@@ -21,7 +21,9 @@ class CreateAcademicsTable extends Migration
             $table->integer('sejarah')->nullable();
             $table->text('feedback')->nullable();
             $table->timestamps();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+
+            //adding constraint
+            $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
         });
     }
 

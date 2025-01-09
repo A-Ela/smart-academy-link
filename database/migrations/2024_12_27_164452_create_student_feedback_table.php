@@ -10,9 +10,12 @@ class CreateStudentFeedbackTable extends Migration
     {
         Schema::create('student_feedback', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('studentID');
             $table->text('feedback');
             $table->timestamps();
+
+            //add constraint
+            $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
         });
     }
 

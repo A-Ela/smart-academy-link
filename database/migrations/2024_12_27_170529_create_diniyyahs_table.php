@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('diniyyahs', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('student_id');
+        $table->unsignedBigInteger('studentID');
         $table->integer('akhlak')->nullable();
         $table->integer('aqidah')->nullable();
         $table->integer('sirah')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
         $table->timestamps();
 
         // Foreign key constraint to link to the students table
-        $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+        $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
     });
 }
 

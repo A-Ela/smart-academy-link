@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('tarbiahs', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('student_id');
+        $table->unsignedBigInteger('studentID');
         $table->integer('cukup_solat')->nullable();
         $table->integer('amali_solat')->nullable();
         $table->integer('tilawah_al_quran')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
         $table->timestamps();
 
         // Foreign key constraint to link to the students table
-        $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+        $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
     });
 }
 
