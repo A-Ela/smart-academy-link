@@ -1,4 +1,4 @@
-@extends('layouts.')
+@extends('teacher-subsystem.layouts.app')
 
 @section('content')
     <header>

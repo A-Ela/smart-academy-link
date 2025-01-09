@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('teacher-subsystem.layouts.app')
 
 @section('content')
     <h1>Hafazan & Tilawah</h1>

@@ -16,7 +16,7 @@ class GradeController extends Controller
     public function academic($student_id)
     {
         $student = Student::findOrFail($student_id);
-        return view('grades.academic', compact('student'));
+        return view('teacher-subsystem.grades.academic', compact('student'));
     }
 
     // Store the grade and feedback for Academic

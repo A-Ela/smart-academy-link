@@ -10,7 +10,7 @@ class Tarbiah extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
+        'studentID',
         'cukup_solat',
         'amali_solat',
         'tilawah_al_quran',

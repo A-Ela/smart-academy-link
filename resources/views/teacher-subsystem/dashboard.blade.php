@@ -1,5 +1,5 @@
 <!-- resources/views/dashboard.blade.php -->
-@extends('layouts.app')
+@extends('teacher-subsystem.layouts.app')
 
 @section('content')
 <div class="placeholder">

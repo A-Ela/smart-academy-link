@@ -12,13 +12,13 @@ class EventController extends Controller
     {
         // Fetch events ordered by date descending
         $events = Event::orderBy('event_date', 'desc')->get();
-        return view('events.index', compact('events'));
+        return view('teacher-subsystem.events.index', compact('events'));
     }
 
     // Show the form to create a new event
     public function create()
     {
-        return view('events.create');
+        return view('teacher-subsystem.events.create');
     }
 
     // Store a newly created event in the database
@@ -62,7 +62,7 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::findOrFail($id);
-        return view('events.edit', compact('event'));
+        return view('teacher-subsystem.events.edit', compact('event'));
     }
 
     // Update an event in the database

@@ -1,6 +1,6 @@
 <!-- resources/views/students/index.blade.php -->
 
-@extends('layouts.app')
+@extends('teacher-subsystem.layouts.app')
 
 @section('content')
     <div class="container mt-4">

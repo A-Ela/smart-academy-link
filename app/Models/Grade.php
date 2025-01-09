@@ -9,7 +9,7 @@ class Grade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['student_id', 'subject_id', 'grade'];
+    protected $fillable = ['studentID', 'subject_id', 'grade'];
 
     public function subject()
     {
@@ -18,6 +18,6 @@ class Grade extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(students::class);
     }
 }

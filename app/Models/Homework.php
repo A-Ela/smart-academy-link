@@ -13,6 +13,6 @@ class Homework extends Model
     protected $table = 'homeworks';  // Ensure this matches the table name in the database
 
     // Define the fillable attributes
-    protected $fillable = ['description', 'due_date', 'subject_name', 'class_id'];
+    protected $fillable = ['description', 'due_date', 'subject_name', 'classID'];
 }
 

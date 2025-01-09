@@ -9,10 +9,10 @@ class StudentFeedback extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['student_id', 'feedback'];
+    protected $fillable = ['studentID', 'feedback'];
 
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(students::class);
     }
 }

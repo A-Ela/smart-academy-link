@@ -1,5 +1,5 @@
 <!-- resources/views/homework/index.blade.php -->
-@extends('layouts.app')
+@extends('teacher-subsystem.layouts.app')
 
 @section('content')
     <div class="container mt-4">

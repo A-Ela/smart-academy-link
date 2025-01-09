@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class teachers extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -22,10 +23,10 @@ class teachers extends Authenticatable
     }
 
     // Define the relationship with the Subject model
-    public function subjects()
-    {
-        return $this->hasMany(subjects::class, 'teacherID');
-    }
+   // public function subjects()
+    //{
+      //  return $this->hasMany(Subjects::class, 'teacherID');
+    //}
 
     // Optionally, hide the password attribute from array or JSON serialization
     protected $hidden = ['password'];

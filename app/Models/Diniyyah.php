@@ -10,7 +10,7 @@ class Diniyyah extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
+        'studentID',
         'akhlak',
         'aqidah',
         'sirah',
