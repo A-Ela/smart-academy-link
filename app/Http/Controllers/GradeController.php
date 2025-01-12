@@ -49,7 +49,7 @@ class GradeController extends Controller
     public function diniyyah($student_id)
     {
         $student = students::findOrFail($student_id);
-        return view('grades.diniyyah', compact('student'));
+        return view('teacher-subsystem.grades.diniyyah', compact('student'));
     }
 
     // Store the grade and feedback for Diniyyah
@@ -82,7 +82,7 @@ class GradeController extends Controller
     public function tarbiah($student_id)
     {
         $student = students::findOrFail($student_id);
-        return view('grades.tarbiah', compact('student'));
+        return view('teacher-subsystem.grades.tarbiah', compact('student'));
     }
 
     // Store the grade and feedback for Tarbiah
@@ -115,7 +115,7 @@ class GradeController extends Controller
     public function show($student_id)
     {
         $student = students::findOrFail($student_id);
-        return view('grades.show', compact('student'));
+        return view('teacher-subsystem.grades.show', compact('student'));
     }
 
     // Store the grade and feedback for any category

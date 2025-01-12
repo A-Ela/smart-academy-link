@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>Grading for {{ $student->name }}</h1>
+    <h2>Grade Student: {{ $student->name }}</h2>
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
     <form action="{{ route('grading.store', $student->id) }}" method="POST">
         @csrf

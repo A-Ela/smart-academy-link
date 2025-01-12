@@ -22,9 +22,9 @@ return new class extends Migration
     public function down()
     {
         // Drop foreign key constraints
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropForeign(['classID']);
-        });
+        //Schema::table('students', function (Blueprint $table) {
+          //  $table->dropForeign(['classID']);
+        //});
 
         Schema::table('class_teacher', function (Blueprint $table) {
             $table->dropForeign(['classID']);
