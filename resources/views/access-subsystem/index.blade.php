@@ -19,7 +19,7 @@
         <div class="user-options">
             <div class="user-card" onclick="navigateToPage('{{ url('/student-login') }}')">
                 <img src="{{ asset('images/student-icon.png') }}" alt="Student Icon">
-                <p>STUDENT</p>
+                <p>PARENT</p>
             </div>
             <div class="user-card" onclick="navigateToPage('{{ url('/teacher-login') }}')">
                 <img src="{{ asset('images/teacher-icon.png') }}" alt="Teacher Icon">
