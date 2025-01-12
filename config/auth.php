@@ -68,6 +68,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\admins::class,
         ],
+        'parents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\parents::class,
+        ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\teachers::class,
+        ],
     ],
 
     /*
