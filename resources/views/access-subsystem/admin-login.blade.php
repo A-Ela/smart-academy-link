@@ -9,10 +9,10 @@
 <body>
     <div class="login-container">
         <h2>Admin Login</h2>
-        <form action="{{ url('/process-login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf <!-- Laravel CSRF protection -->
             <div class="form-group">
-                <label for="username">Username (NRIC):</label>
+                <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">

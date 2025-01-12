@@ -13,6 +13,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\AuthController;
 
 
 //* routing for access
@@ -46,18 +47,27 @@ Route::get('/register', function () {
 Route::get('/reset-password', function () {
     return view('access-subsystem.reset-password'); // Displays reset-password.blade.php
 });
-use App\Http\Controllers\AuthController;
-Route::post('/password/reset', [AuthController::class, 'sendPasswordReset'])->name('password.reset');
+
+// Route for contact school form submission
+Route::post('/contact-school', [AuthController::class, 'contactSchool'])->name('contact.school');
+
+// Route for login
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// Route for logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::post('/password/reset', [AuthController::class, 'sendPasswordReset'])->name('password.reset');
 
 
 
 //* routing for admin
+Route::middleware(['auth', 'check.user.role:admin'])->group(function () {
+
 Route::get('/admin',[adminController::class,'getDashboard'])->name('admin-dashboard');
 
 //select class
 Route::get('/admin/class-selector',[adminController::class,'getClassInfo'])->name('class-selector');
 Route::post('/admin/class-selector/confirm', [classManagerController::class, 'handleClassSelection'])->name('class-selector.confirm');
-
 
 //class lists
 Route::get('/admin/class-list',[adminController::class,'getClassList'])->name('class-list');
@@ -67,7 +77,6 @@ Route::get('/admin/class-list/add-document',[classManagerController::class,'docu
 Route::post('/admin/class-list/store', [classManagerController::class,'store'])->name('class-list.store');
 //viewing specifci parent info
 Route::get('/admin/class-list/{classID}', [classManagerController::class, 'show'])->name('class.show');
-
 
 //student list
 Route::get('/admin/student-list',[adminController::class,'showStudentList'])->name('student-list');
@@ -80,7 +89,6 @@ Route::get('/admin/student-list/{studentID}', [studentManagerController::class, 
 //searching for student route
 Route::get('/students/search', [studentManagerController::class, 'search'])->name('students.search');
 
-
 //teacher list
 Route::get('/admin/teacher-list',[adminController::class,'showTeacherList'])->name('teacher-list');
 Route::get('/admin/teacher-list/add-manualy', [teacherManagerController::class, 'manual'])->name('add-teacher-manualy');
@@ -90,7 +98,6 @@ Route::post('/admin/teacher-list/store', [teacherManagerController::class,'store
 //viewing specifci teacher info
 Route::get('/admin/teacher-list/{teacherID}', [teacherManagerController::class, 'show'])->name('teachers.show');
 
-
 //parent list
 Route::get('/admin/parent-list',[adminController::class,'getParentList'])->name('parent-list');
 Route::get('/admin/parent-list/add-manualy',[parentManagerController::class, 'manual'])->name('add-parent-manualy');
@@ -99,10 +106,11 @@ Route::get('/admin/parent-list/add-document',[parentManagerController::class, 'd
 Route::post('/admin/parent-list/store', [parentManagerController::class, 'store'])->name('parent-list.store');  
 //viewing specifci parent info
 Route::get('/admin/parent-list/{parentID}', [parentManagerController::class, 'show'])->name('parents.show');
-
+});
 
 
 //* routing for teacher
+Route::middleware(['auth', 'check.user.role:teacher'])->group(function () {
 Route::get('/teacher-dashboard', function () {
     return view('teacher-subsystem.dashboard'); 
 });
@@ -171,13 +179,15 @@ Route::get('/tarbiah/{student_id}', [GradeController::class, 'tarbiah'])->name('
 Route::post('/academic/{student_id}', [GradeController::class, 'storeAcademic'])->name('academic.store');
 Route::post('/diniyyah/{student_id}', [GradeController::class, 'storeDiniyyah'])->name('diniyyah.store');
 Route::post('/tarbiah/{student_id}', [GradeController::class, 'storeTarbiah'])->name('tarbiah.store');
-
+});
 
 
 //* routing for parent
+Route::middleware(['auth', 'check.user.role:parent'])->group(function () {
+    //add parent routes here
 
 
-
+});
 //* routing for tilawah
 
 

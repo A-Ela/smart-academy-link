@@ -3,48 +3,71 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Models\teachers;
+use App\Models\parents;
+use App\Models\admins;
 
 class AuthController extends Controller
 {
-    /**
-     * Handle user login
-     */
+    public function showLoginForm()
+    {
+        return view('access-subsystem.login');
+    }
+
     public function login(Request $request)
     {
-        // Validate the request
         $request->validate([
-            'username' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
         $username = $request->input('username');
         $password = $request->input('password');
 
-        // Query the database for the user
-        $user = DB::table('users')->where('email', $username)->first();
-
-        if ($user) {
-            // Verify the password
-            if (Hash::check($password, $user->password)) {
-                // Regenerate the session ID for security
-                $request->session()->regenerate();
-
-                // Store user data in the session
-                Session::put('role', $user->role);
-                Session::put('user_id', $user->id);
-
-                // Redirect to the dashboard
-                return redirect('/dashboard');
-            } else {
-                // Invalid password
-                return back()->withErrors(['Invalid username or password.']);
-            }
-        } else {
-            // User not found
-            return back()->withErrors(['Invalid username or password.']);
+        // Check in teachers table
+        $user = teachers::where('email', $username)->first();
+        if ($user && Hash::check($password, $user->password)) {
+            Auth::login($user);
+            return redirect()->route('teacher-dashboard');
         }
+
+        // Check in parents table
+        $user = parents::where('email', $username)->first();
+        if ($user && Hash::check($password, $user->password)) {
+            Auth::login($user);
+            return redirect()->route('parent-dashboard');
+        }
+
+        // Check in admins table
+        $user = admins::where('username', $username)->first();
+        if ($user && Hash::check($password, $user->password)) {
+            Auth::login($user);
+            return redirect()->route('admin-dashboard');
+        }
+
+        return back()->withErrors(['Invalid username or password.']);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function contactSchool(Request $request)
+    {
+        $request->validate([
+            'contact_info' => 'required|string|max:255',
+        ]);
+
+        // Handle the contact information (e.g., send an email to the school administration)
+        // For simplicity, we'll just return a success message
+        return back()->with('success', 'Your contact information has been submitted. The school will contact you soon.');
     }
 }
