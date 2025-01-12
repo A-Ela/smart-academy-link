@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('access-subsystem.login');
+        return view('access-subsystem.index');
     }
 
     public function login(Request $request)

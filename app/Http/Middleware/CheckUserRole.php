@@ -22,6 +22,6 @@ class CheckUserRole
             }
         }
 
-        return redirect('/login')->withErrors(['You do not have access to this section.']);
+        return redirect('/')->withErrors(['You do not have access to this section.']);
     }
 }

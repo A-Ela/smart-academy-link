@@ -52,6 +52,7 @@ Route::get('/reset-password', function () {
 Route::post('/password/reset', [AuthController::class, 'sendPasswordReset'])->name('password.reset');
 
 // Route for login
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Route for logout
