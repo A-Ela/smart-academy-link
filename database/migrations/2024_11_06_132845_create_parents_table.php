@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->id('parentID'); // Primary key
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');

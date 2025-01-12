@@ -12,7 +12,7 @@ class parents extends Authenticatable
 
     protected $primaryKey = 'parentID';
 
-    protected $fillable = ['email', 'password', 'name'];
+    protected $fillable = ['username', 'email', 'password', 'name'];
 
     public function students()
     {

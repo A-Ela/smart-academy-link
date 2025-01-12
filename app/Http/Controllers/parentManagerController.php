@@ -41,6 +41,7 @@ class parentManagerController extends Controller
         //* if adding manually
         // Validate input
         $validated = $request->validate([
+            'username' => 'required|string|max:255|unique:parents',
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:parents', // Ensure email is unique in the parents table
             'password' => 'required|string|min:8',
@@ -52,11 +53,7 @@ class parentManagerController extends Controller
         $validated['password'] = bcrypt($validated['password']);
 
         // Create the parent record
-        $parent = parents::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => $validated['password'],
-        ]);
+        $parent = parents::create($validated);
 
         // Attach students to the parent using the pivot table
         $parent->students()->attach($validated['student_ids']);

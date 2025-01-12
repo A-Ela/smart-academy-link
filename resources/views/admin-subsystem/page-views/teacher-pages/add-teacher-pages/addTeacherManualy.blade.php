@@ -1,4 +1,4 @@
-@extends('admin-subsystem.template.adminTemplate');
+@extends('admin-subsystem.template.adminTemplate')
 
 @section('css')
     @vite('resources/css/addManualStyle.css')
@@ -11,18 +11,25 @@
     
     <form class="add-teacher-form" method="POST" action="{{ route('teacher-list.store') }}">
       @csrf
-        <!-- Validation Errors -->
-        <!-- @if ($errors->any())
-            //<div class="error-messages">
+        @if ($errors->any())
+            <div class="error-messages">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
-        @endif -->
+        @endif
 
-      <!-- Teacher Name Field -->
+      <label for="username" class="form-label">Username:</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        class="form-input" 
+        placeholder="Enter teacher's username" 
+        required>
+
       <label for="teacherName" class="form-label">Name:</label>
       <input 
         type="text" 
@@ -32,7 +39,6 @@
         placeholder="Enter teacher's name" 
         required>
       
-      <!-- Email Field -->
       <label for="email" class="form-label">Email:</label>
       <input 
         type="email" 
@@ -42,7 +48,6 @@
         placeholder="Enter email address" 
         required>
       
-      <!-- Password Field -->
       <label for="password" class="form-label">Password:</label>
       <input 
         type="password" 
@@ -52,13 +57,11 @@
         placeholder="Enter a secure password" 
         required>
       
-      <!-- Buttons -->
       <div class="form-actions">
         <button type="submit" class="form-btn submit-btn">Add Teacher</button>
         <button type="button" class="form-btn cancel-btn" onclick="location.href='{{ route('teacher-list') }}'">Cancel</button>
       </div>
     </form>
   </div>
-
 </div>
 @endsection

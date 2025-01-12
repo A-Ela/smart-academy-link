@@ -33,6 +33,7 @@ class teacherManagerController extends Controller
         //* add manually
         // Validate the incoming data
         $request->validate([
+            'username' => 'required|string|max:255|unique:teachers',
             'teacherName' => 'required|string|max:255',
             'email' => 'required|email|unique:teachers',
             'password' => 'required|string|min:8',
@@ -40,6 +41,7 @@ class teacherManagerController extends Controller
 
         // Create a new teacher record
         teachers::create([
+            'username' => $request->username,
             'teacherName' => $request->teacherName,
             'email' => $request->email,
             'password' => bcrypt($request->password),

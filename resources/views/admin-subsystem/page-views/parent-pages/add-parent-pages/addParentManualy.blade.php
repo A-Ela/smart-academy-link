@@ -24,6 +24,16 @@
             </div>
         @endif
 
+      <!-- Username Field -->
+      <label for="username" class="form-label">Username:</label>
+      <input 
+        type="text" 
+        id="username" 
+        name="username" 
+        class="form-input" 
+        placeholder="Enter parent's username" 
+        required>
+
       <!-- Parent Name Field -->
       <label for="name" class="form-label">Name:</label>
       <input 
@@ -62,6 +72,9 @@
         class="form-input select2" 
         multiple 
         required>
+        @foreach ($students as $student)
+          <option value="{{ $student->studentID }}">{{ $student->name }}</option>
+        @endforeach
       </select>
 
       <!-- Buttons -->
