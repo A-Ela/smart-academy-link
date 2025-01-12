@@ -15,6 +15,42 @@ use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\GradeController;
 
 
+//* routing for access
+// Route for the index page
+Route::get('/', function () {
+    return view('access-subsystem.index'); // Displays index.blade.php
+});
+
+// Route for admin login
+Route::get('/admin-login', 
+function () {
+    return view('access-subsystem.admin-login'); // Displays admin-login.blade.php
+});
+
+// Route for student login
+Route::get('/student-login', function () {
+    return view('access-subsystem.student-login'); // Displays student-login.blade.php
+});
+
+// Route for teacher login
+Route::get('/teacher-login', function () {
+    return view('access-subsystem.teacher-login'); // Displays teacher-login.blade.php
+});
+
+// Route for registration
+Route::get('/register', function () {
+    return view('access-subsystem.register'); // Displays register.blade.php
+});
+
+// Route for password reset
+Route::get('/reset-password', function () {
+    return view('access-subsystem.reset-password'); // Displays reset-password.blade.php
+});
+use App\Http\Controllers\AuthController;
+Route::post('/password/reset', [AuthController::class, 'sendPasswordReset'])->name('password.reset');
+
+
+
 //* routing for admin
 Route::get('/admin',[adminController::class,'getDashboard'])->name('admin-dashboard');
 
@@ -144,7 +180,4 @@ Route::post('/tarbiah/{student_id}', [GradeController::class, 'storeTarbiah'])->
 
 //* routing for tilawah
 
-
-
-//* routing for access
 
