@@ -229,8 +229,7 @@ Route::get('/class-telegram-links', function () {
     return view('parent-subsystem.classTelegramLinks', ['classLinks' => $classLinks]);
 })->name('class-telegram-links');
 
-//* Routes for Academic, Diniyyah, and Tarbiah Progress Pages
-
+// Routes for Academic, Diniyyah, and Tarbiah Progress Pages
 // Academic Progress routes
 Route::get('/academic/year/{year}', function ($year) {
     return view('parent-subsystem.academic_progress', ['year' => $year]);
@@ -252,6 +251,3 @@ Route::get('/notifications', function () {
 })->name('notifications');
 
 //});
-//* routing for tilawah
-
-
