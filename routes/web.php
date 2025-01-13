@@ -89,7 +89,7 @@ Route::middleware(['auth', 'check.user.role:admin'])->group(function () {
 });
 
 //* routing for teacher
-Route::middleware(['auth', 'check.user.role:teacher'])->group(function () {
+//Route::middleware(['auth', 'check.user.role:teacher'])->group(function () {
     Route::get('/teacher-dashboard', function () {
         return view('dashboard');  // Ensure 'dashboard.blade.php' exists in resources/views
     });
@@ -194,7 +194,7 @@ Route::middleware(['auth', 'check.user.role:teacher'])->group(function () {
     
     
     Route::resource('hafazan', HafazanController::class);
-});
+//});
 
 //* routing for parent
 //Route::middleware(['auth', 'check.user.role:parent'])->group(function () {
