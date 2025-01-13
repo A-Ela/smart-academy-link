@@ -10,14 +10,14 @@ class CreateHafazansTable extends Migration
     {
         Schema::create('hafazans', function (Blueprint $table) {
             $table->id();  // Primary key
-            $table->unsignedBigInteger('student_id');  // Foreign key to students table
+            $table->unsignedBigInteger('studentID');  // Foreign key to students table
             $table->string('surah_name');  // Surah name field
             $table->integer('ayah_number');  // Ayah number field
             $table->date('recite_date');  // Date for reciting field
             $table->timestamps();  // Created at and updated at fields
 
             // Add foreign key constraint
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
         });
     }
 

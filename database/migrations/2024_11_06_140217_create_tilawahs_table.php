@@ -20,9 +20,13 @@ return new class extends Migration
             $table->date('dateEnd'); // End date
             $table->string('grade'); // Grade
             $table->string('HafizRemark'); // Remarks
-            $table->foreignId('studentID')->constrained('students')->onDelete('cascade'); // Foreign key to students table
-            $table->foreignId('classID')->constrained('class_names')->onDelete('cascade'); // Foreign key to class_names table
+            $table->unsignedBigInteger('studentID'); // Foreign key to students table
+            $table->unsignedBigInteger('classID'); // Foreign key to class_names table
             $table->timestamps(); // Created_at and updated_at timestamps
+
+            // Foreign key constraint
+            $table->foreign('classID')->references('classID')->on('classNames')->onDelete('cascade');
+            $table->foreign('studentID')->references('studentID')->on('students')->onDelete('cascade');
         });
     }
 
