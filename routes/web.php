@@ -15,6 +15,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ParentDashboardController;
 
 //* routing for access
 // Route for the index page
@@ -135,11 +136,61 @@ Route::middleware(['auth', 'check.user.role:teacher'])->group(function () {
 });
 
 //* routing for parent
-Route::middleware(['auth', 'check.user.role:parent'])->group(function () {
+//Route::middleware(['auth', 'check.user.role:parent'])->group(function () {
     //add parent routes here
 
+// Parent Dashboard route
+Route::get('/parent-dashboard', [ParentDashboardController::class, 'index'])->name('parent-dashboard');
 
-});
+// Route for events page
+Route::get('/events', function () {
+    return view('parent-subsystem.events');
+})->name('events');
+
+// Route for student performance page
+Route::get('/student-performance/minah-binti-abu', function () {
+    return view('parent-subsystem.studentPerformance', ['studentName' => 'Minah binti Abu']);
+})->name('student-performance-minah');
+
+// Route for calendar page
+Route::get('/calendar', function () {
+    return view('parent-subsystem.calendar');
+})->name('calendar');
+
+// Route for class Telegram links
+Route::get('/class-telegram-links', function () {
+    $classLinks = [
+        ['class' => 'Class 1A', 'link' => 'https://t.me/class1Agroup'],
+        ['class' => 'Class 1B', 'link' => 'https://t.me/class1Bgroup'],
+        ['class' => 'Class 2A', 'link' => 'https://t.me/class2Agroup'],
+    ];
+
+    return view('parent-subsystem.classTelegramLinks', ['classLinks' => $classLinks]);
+})->name('class-telegram-links');
+
+//* Routes for Academic, Diniyyah, and Tarbiah Progress Pages
+
+// Academic Progress routes
+Route::get('/academic/year/{year}', function ($year) {
+    return view('parent-subsystem.academic_progress', ['year' => $year]);
+})->name('academic-progress');
+
+// Diniyyah Progress routes
+Route::get('/diniyyah/year/{year}', function ($year) {
+    return view('parent-subsystem.diniyyah_progress', ['year' => $year]);
+})->name('diniyyah-progress');
+
+// Tarbiah Progress routes
+Route::get('/tarbiah/year/{year}', function ($year) {
+    return view('parent-subsystem.tarbiah_progress', ['year' => $year]);
+})->name('tarbiah-progress');
+
+// Route for notifications
+Route::get('/notifications', function () {
+    return view('parent-subsystem.notifications');
+})->name('notifications');
+
+//});
 //* routing for tilawah
 
 
