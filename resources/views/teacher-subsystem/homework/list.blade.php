@@ -1,7 +1,10 @@
-@extends('teacher-subsystem.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="homework-container">
+        <a href="{{ url()->previous() }}" class="btn btn-back mb-3">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
         <h2 class="text-center mb-4">Homework List</h2>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
@@ -20,7 +23,7 @@
                             <td>{{ $homework->subject_name }}</td>
                             <td>{{ $homework->class_id }}</td>
                             <td>{{ $homework->description }}</td>
-                            <td>{{ \Carbon\Carbon::parse($homework->due_date)->format('M d, Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($homework->due_date)->format('d/m/Y') }}</td> <!-- Change here -->
                             <td class="text-center">
                                 <!-- Edit Button -->
                                 <a href="{{ route('homework.edit', $homework->id) }}" class="btn btn-sm btn-edit">
@@ -38,12 +41,27 @@
                         </tr>
                     @endforeach
                 </tbody>
+                
             </table>
         </div>
     </div>
 
     <!-- Custom Styling -->
     <style>
+        .btn-back {
+    background-color:cadetblue;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #545b62;
+    color: white;
+    text-decoration: none;
+}
         .homework-container {
             background: #f9f9f9;
             padding: 30px;

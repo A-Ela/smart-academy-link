@@ -1,80 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="event-container">
-        <a href="{{ url()->previous() }}" class="btn btn-back mb-3">
-            <i class="fas fa-arrow-left"></i> Back
+    <div class="container mt-4">
+        <!-- Back Button -->
+        <a href="{{ route('hafazan.create') }}" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back 
         </a>
-        <h2 class="text-center mb-4">Events</h2>
 
+        <h2 class="mt-4">Student Recitations</h2>
+
+        <!-- Success Message -->
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <a href="{{ route('events.create') }}" class="btn btn-primary mb-3">Add New Event</a>
-
-        <!-- Calendar Section -->
-        <div id="calendar"></div>
-
-        <!-- Event Table Section -->
-        <div class="table-responsive mt-5">
-            <table class="table table-hover table-bordered">
-                <thead class="thead-light">
+        <!-- Hafazan Assignments Table -->
+        <div class="homework-container">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Event Date</th>
-                        <th>Actions</th>
+                        <th>Student Name</th>
+                        <th>Surah</th>
+                        <th>Ayah Number</th>
+                        <th>Recite Date</th>
+                        <th>Actions</th> <!-- Added Actions column -->
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($events as $event)
+                    @foreach($hafazans as $hafazan)
                         <tr>
-                            <td>{{ $event->title }}</td>
-                            <td>{{ $event->description }}</td>
-                            <td>{{ \Carbon\Carbon::parse($event->event_date)->format('d/m/Y') }}</td>
-                            <td class="text-center">
+                            <td>{{ $hafazan->student->name }}</td>
+                            <td>{{ $hafazan->surah_name }}</td>
+                            <td>{{ $hafazan->ayah_number }}</td>
+                            <td>{{ $hafazan->recite_date }}</td> <!-- Display Recite Date -->
+                            <td>
                                 <!-- Edit Button -->
-                                <a href="{{ route('events.edit', $event->id) }}" class="btn btn-sm btn-edit">
+                                <a href="{{ route('hafazan.edit', $hafazan->id) }}" class="btn btn-edit btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
+                                
                                 <!-- Delete Button -->
-                                <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display: inline-block;">
+                                <form action="{{ route('hafazan.destroy', $hafazan->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-delete" onclick="return confirm('Are you sure you want to delete this event?')">
+                                    <button type="submit" class="btn btn-delete btn-sm">
                                         <i class="fas fa-trash"></i> Delete
                                     </button>
                                 </form>
-                            </td>
+                            </td> <!-- Added actions column for edit/delete -->
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-
-    <!-- FullCalendar Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-
-    <!-- FullCalendar Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js"></script>
-
-    <!-- Initialize FullCalendar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                events: '/fetch-events',  // Fetch events dynamically via AJAX
-                eventClick: function(info) {
-                    alert('Event: ' + info.event.title + '\n' + info.event.extendedProps.description);
-                },
-            });
-            calendar.render();
-        });
-    </script>
 
     <!-- Custom Styling -->
     <style>
@@ -93,7 +74,7 @@
             text-decoration: none;
         }
 
-        .event-container {
+        .homework-container {
             background: #f9f9f9;
             padding: 30px;
             border-radius: 12px;
@@ -102,7 +83,7 @@
             margin: 20px auto;
         }
 
-        .event-container h2 {
+        .homework-container h2 {
             font-size: 2rem;
             color: #333;
         }
@@ -171,4 +152,7 @@
             padding: 5px 10px;
         }
     </style>
+
+    <!-- Include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 @endsection

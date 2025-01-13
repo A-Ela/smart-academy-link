@@ -153,9 +153,11 @@
         <h2>MENU</h2>
         <!-- Sidebar Menu Options -->
         <a href="{{ url('/homework/create') }}">Create Homework</a>
-        <a href="{{ route('homework.list') }}">View Homework List</a>
+        
         <a href="{{ route('events.create') }}" class="nav-link">Events</a>
-        <a href="{{ url('/notifications') }}">Notification</a>
+        <a href="{{ route('hafazan.create') }}" class="nav-link">Hafazan & Tilawah</a>
+
+
         <a href="{{ url('/students') }}">Students List</a>
         <a href="{{ route('calendar.index') }}">Calendar</a>
 

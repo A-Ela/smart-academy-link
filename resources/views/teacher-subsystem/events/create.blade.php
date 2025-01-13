@@ -1,5 +1,5 @@
 <!-- resources/views/events/create.blade.php -->
-@extends('teacher-subsystem.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container mt-4">
